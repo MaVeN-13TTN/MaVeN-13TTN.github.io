@@ -248,92 +248,95 @@ document.addEventListener("DOMContentLoaded", function () {
   const modalClose = document.querySelector(".modal-close");
   const projectButtons = document.querySelectorAll(".view-project");
 
-  // Open modal when "View Details" is clicked
-  projectButtons.forEach((button) => {
-    button.addEventListener("click", function (e) {
-      e.preventDefault();
+  // Only set up modal functionality if modal elements exist (not on blog pages)
+  if (modal && modalClose) {
+    // Open modal when "View Details" is clicked
+    projectButtons.forEach((button) => {
+      button.addEventListener("click", function (e) {
+        e.preventDefault();
 
-      // Get project data from data attributes
-      const projectCard = this.closest(".project-card");
-      const title = projectCard.getAttribute("data-title");
-      const image = projectCard.getAttribute("data-image");
-      const description = projectCard.getAttribute("data-description");
-      const challenges = projectCard.getAttribute("data-challenges");
-      const featuresJSON = projectCard.getAttribute("data-features");
-      const implementation = projectCard.getAttribute("data-implementation");
-      const github = projectCard.getAttribute("data-github");
-      const demo = projectCard.getAttribute("data-demo");
-      const tech = projectCard.getAttribute("data-tech").split(",");
+        // Get project data from data attributes
+        const projectCard = this.closest(".project-card");
+        const title = projectCard.getAttribute("data-title");
+        const image = projectCard.getAttribute("data-image");
+        const description = projectCard.getAttribute("data-description");
+        const challenges = projectCard.getAttribute("data-challenges");
+        const featuresJSON = projectCard.getAttribute("data-features");
+        const implementation = projectCard.getAttribute("data-implementation");
+        const github = projectCard.getAttribute("data-github");
+        const demo = projectCard.getAttribute("data-demo");
+        const tech = projectCard.getAttribute("data-tech").split(",");
 
-      // Populate modal with project data
-      document.getElementById("modal-project-title").textContent = title;
-      document.getElementById("modal-project-image").src = image;
-      document.getElementById("modal-project-image").alt = title;
-      document.getElementById("modal-project-description").textContent =
-        description;
-      document.getElementById("modal-project-challenges").textContent =
-        challenges;
-      document.getElementById("modal-project-implementation").textContent =
-        implementation;
+        // Populate modal with project data
+        document.getElementById("modal-project-title").textContent = title;
+        document.getElementById("modal-project-image").src = image;
+        document.getElementById("modal-project-image").alt = title;
+        document.getElementById("modal-project-description").textContent =
+          description;
+        document.getElementById("modal-project-challenges").textContent =
+          challenges;
+        document.getElementById("modal-project-implementation").textContent =
+          implementation;
 
-      // Set links
-      document.getElementById("modal-github-link").href = github;
+        // Set links
+        document.getElementById("modal-github-link").href = github;
 
-      // Handle demo link - show only if demo URL exists
-      const demoLink = document.getElementById("modal-demo-link");
-      if (demo && demo.trim() !== "") {
-        demoLink.href = demo;
-        demoLink.style.display = "flex"; // Show the demo link
-      } else {
-        demoLink.style.display = "none"; // Hide the demo link
-      }
+        // Handle demo link - show only if demo URL exists
+        const demoLink = document.getElementById("modal-demo-link");
+        if (demo && demo.trim() !== "") {
+          demoLink.href = demo;
+          demoLink.style.display = "flex"; // Show the demo link
+        } else {
+          demoLink.style.display = "none"; // Hide the demo link
+        }
 
-      // Clear and populate tech tags
-      const techContainer = document.getElementById("modal-project-tech");
-      techContainer.innerHTML = "";
-      tech.forEach((item) => {
-        const span = document.createElement("span");
-        span.textContent = item.trim();
-        techContainer.appendChild(span);
+        // Clear and populate tech tags
+        const techContainer = document.getElementById("modal-project-tech");
+        techContainer.innerHTML = "";
+        tech.forEach((item) => {
+          const span = document.createElement("span");
+          span.textContent = item.trim();
+          techContainer.appendChild(span);
+        });
+
+        // Clear and populate features list
+        const featuresList = document.getElementById("modal-project-features");
+        featuresList.innerHTML = "";
+        const features = JSON.parse(featuresJSON);
+        features.forEach((feature) => {
+          const li = document.createElement("li");
+          li.textContent = feature;
+          featuresList.appendChild(li);
+        });
+
+        // Show modal
+        modal.classList.add("show");
+        body.style.overflow = "hidden"; // Prevent scrolling behind modal
       });
-
-      // Clear and populate features list
-      const featuresList = document.getElementById("modal-project-features");
-      featuresList.innerHTML = "";
-      const features = JSON.parse(featuresJSON);
-      features.forEach((feature) => {
-        const li = document.createElement("li");
-        li.textContent = feature;
-        featuresList.appendChild(li);
-      });
-
-      // Show modal
-      modal.classList.add("show");
-      body.style.overflow = "hidden"; // Prevent scrolling behind modal
     });
-  });
 
-  // Close modal when X is clicked
-  modalClose.addEventListener("click", function () {
-    modal.classList.remove("show");
-    body.style.overflow = ""; // Restore scrolling
-  });
-
-  // Close modal when clicking outside the content
-  modal.addEventListener("click", function (e) {
-    if (e.target === modal) {
+    // Close modal when X is clicked
+    modalClose.addEventListener("click", function () {
       modal.classList.remove("show");
       body.style.overflow = ""; // Restore scrolling
-    }
-  });
+    });
 
-  // Close modal with Escape key
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && modal.classList.contains("show")) {
-      modal.classList.remove("show");
-      body.style.overflow = ""; // Restore scrolling
-    }
-  });
+    // Close modal when clicking outside the content
+    modal.addEventListener("click", function (e) {
+      if (e.target === modal) {
+        modal.classList.remove("show");
+        body.style.overflow = ""; // Restore scrolling
+      }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && modal.classList.contains("show")) {
+        modal.classList.remove("show");
+        body.style.overflow = ""; // Restore scrolling
+      }
+    });
+  } // End of modal functionality conditional
 
   // Certificates Carousel
   const initCarousel = () => {

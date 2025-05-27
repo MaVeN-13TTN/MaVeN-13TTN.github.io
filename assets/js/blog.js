@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (post) {
       try {
-        const response = await fetch(`blogs/${slug}.md`);
+        const response = await fetch(`posts/${slug}.md`);
         if (!response.ok) {
           throw new Error(`Markdown file not found for ${slug}`);
         }
