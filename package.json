@@ -1,0 +1,12 @@
+{
+  "name": "portfolio-blog-generator",
+  "version": "1.0.0",
+  "description": "Auto-generate posts.json from markdown files",
+  "scripts": {
+    "generate-posts": "node scripts/generate-posts.js",
+    "build": "npm run generate-posts"
+  },
+  "devDependencies": {
+    "gray-matter": "^4.0.3"
+  }
+}
