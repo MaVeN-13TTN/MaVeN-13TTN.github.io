@@ -65,10 +65,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (post) {
       try {
+        // Since post.html is in /blog/ and posts are in /blog/posts/,
+        // the relative path should work correctly
         const response = await fetch(`posts/${slug}.md`);
         if (!response.ok) {
           throw new Error(
-            `Markdown file not found for ${slug}. Status: ${response.status}`
+            `Markdown file not found for ${slug}. Status: ${
+              response.status
+            }. URL: ${new URL(`posts/${slug}.md`, window.location.href).href}`
           );
         }
         const markdown = await response.text();
