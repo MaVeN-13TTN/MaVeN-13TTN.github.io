@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post - Ndung'u Kinyanjui</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="blog.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Highlight.js for code block styling -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">NKS</div>
+            <div class="nav-actions">
+                <div class="nav-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#about">About Me</a></li>
+                <li><a href="index.html#education">Education</a></li>
+                <li><a href="index.html#skills">Skills</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="index.html#certifications">Certifications</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="index.html#resume">Resume</a></li>
+                <li><a href="index.html#contact-main">Contact</a></li>
+                <li class="theme-toggle-container">
+                    <!-- Theme Toggle Button -->
+                    <div class="theme-toggle">
+                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-sun"></i>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="blog-main-content blog-post-page">
+        <article id="blog-post-content">
+            <!-- Content will be loaded by blog.js -->
+            <div class="loading-spinner"></div>
+        </article>
+
+        <aside class="blog-sidebar">
+            <div class="related-posts">
+                <h3>Related Posts</h3>
+                <ul id="related-posts-list">
+                    <!-- Related posts will be listed here -->
+                </ul>
+            </div>
+            <div class="table-of-contents">
+                <h3>Table of Contents</h3>
+                <ul id="toc-list">
+                    <!-- ToC will be generated here -->
+                </ul>
+            </div>
+        </aside>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">NKS</div>
+            <p>Made with ❤️ by Ndung'u Kinyanjui</p>
+            <p>&copy; <span id="current-year">2023</span> | Powered by GitHub Pages</p>
+        </div>
+        <div class="footer-links">
+            <a href="index.html#about">About</a>
+            <a href="index.html#skills">Skills</a>
+            <a href="index.html#projects">Projects</a>
+            <a href="index.html#certifications">Certifications</a>
+            <a href="index.html#contact-main">Contact</a>
+        </div>
+    </footer>
+
+    <div class="scroll-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.2/marked.min.js"></script>
+    <script src="blog.js"></script>
+</body>
+</html>
