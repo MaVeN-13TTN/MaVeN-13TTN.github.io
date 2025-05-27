@@ -1,0 +1,15 @@
+include:
+  - "blog/posts/*.md"
+  - "*.md"
+
+defaults:
+  - scope:
+      path: "blog/posts"
+      type: "posts"
+    values:
+      layout: null
+      permalink: /:path/:basename:output_ext
+
+plugins: []
+markdown: kramdown
+highlighter: rouge
