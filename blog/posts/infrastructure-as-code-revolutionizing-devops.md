@@ -3,7 +3,7 @@ title: "Infrastructure as Code: Revolutionizing DevOps Practices 🚀"
 date: "May 26, 2025"
 category: "DevOps"
 author: "Ndung'u Kinyanjui"
-image: "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1050&q=80"
+image: "../assets/images/blog_images/terraform-logo.png"
 excerpt: "Explore how Infrastructure as Code is transforming DevOps practices and revolutionizing the way we manage infrastructure in modern software development."
 readTime: "8 min read"
 tags: ["InfrastructureAsCode", "Terraform", "DevOps", "CloudComputing", "AWS", "30DayTerraformChallenge", "IaC", "CloudEngineering"]
