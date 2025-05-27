@@ -54,6 +54,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function loadBlogPost(slug) {
     if (!blogPostContent) return;
+
+    // Ensure posts are loaded first
+    if (blogPosts.length === 0) {
+      await loadBlogPosts();
+    }
+
     const post = blogPosts.find((p) => p.slug === slug);
     const loadingSpinner = blogPostContent.querySelector(".loading-spinner");
 
@@ -61,7 +67,9 @@ document.addEventListener("DOMContentLoaded", () => {
       try {
         const response = await fetch(`posts/${slug}.md`);
         if (!response.ok) {
-          throw new Error(`Markdown file not found for ${slug}`);
+          throw new Error(
+            `Markdown file not found for ${slug}. Status: ${response.status}`
+          );
         }
         const markdown = await response.text();
         const htmlContent = marked.parse(markdown);
@@ -84,12 +92,19 @@ document.addEventListener("DOMContentLoaded", () => {
       } catch (error) {
         console.error("Error loading post:", error);
         if (loadingSpinner) loadingSpinner.remove();
-        blogPostContent.innerHTML =
-          "<p>Error loading blog post. The markdown file might be missing or there was a network issue.</p>";
+        blogPostContent.innerHTML = `<div class="error-message">
+            <h2>Error Loading Blog Post</h2>
+            <p><strong>Error:</strong> ${error.message}</p>
+            <p>Please try refreshing the page or check your internet connection.</p>
+          </div>`;
       }
     } else {
       if (loadingSpinner) loadingSpinner.remove();
-      blogPostContent.innerHTML = "<p>Blog post not found.</p>";
+      blogPostContent.innerHTML = `<div class="error-message">
+        <h2>Blog Post Not Found</h2>
+        <p>The requested blog post could not be found.</p>
+        <p><a href="index.html">← Back to Blog</a></p>
+      </div>`;
     }
   }
 
@@ -183,7 +198,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const urlParams = new URLSearchParams(window.location.search);
       const postSlug = urlParams.get("post");
       if (postSlug) {
-        loadBlogPost(postSlug);
+        await loadBlogPost(postSlug);
       } else {
         blogPostContent.innerHTML = "<p>No blog post specified.</p>";
       }
