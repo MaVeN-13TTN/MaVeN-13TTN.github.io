@@ -3,9 +3,10 @@ title: "My First Blog Post: The Journey Begins"
 category: "General"
 date: "May 27, 2025"
 author: "Ndung'u Kinyanjui"
-image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80"
+image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3&auto=format&fit=crop&w=1050&q=80"
 excerpt: "This is the beginning of my blogging journey. I'll be sharing insights on cloud, cybersecurity, and more."
-tags: ["introduction", "tech"]
+tags: ["introduction", "tech", "journey"]
+readTime: "3 min read"
 ---
 
 # My First Blog Post: The Journey Begins

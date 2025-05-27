@@ -18,4 +18,8 @@ fi
 npm run generate-posts
 
 echo "✅ Done! Your posts.json has been updated."
+echo "💡 Next steps:"
+echo "   1. Review the generated posts.json"
+echo "   2. Test your blog at blog.html"
+echo "   3. Commit and push your changes"
 echo "💡 You can now commit and push your changes."

@@ -5,27 +5,31 @@
     "category": "General",
     "date": "May 27, 2025",
     "author": "Ndung'u Kinyanjui",
-    "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
+    "image": "https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3&auto=format&fit=crop&w=1050&q=80",
     "excerpt": "This is the beginning of my blogging journey. I'll be sharing insights on cloud, cybersecurity, and more.",
     "tags": [
       "introduction",
-      "tech"
+      "tech",
+      "journey"
     ]
   },
   {
     "slug": "infrastructure-as-code-revolutionizing-devops",
-    "title": "Infrastructure as Code: Revolutionizing DevOps Practices",
+    "title": "Infrastructure as Code: Revolutionizing DevOps Practices 🚀",
     "category": "DevOps",
-    "date": "2025-05-26",
-    "author": "MaVeN",
-    "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
-    "excerpt": "Discover how Infrastructure as Code is transforming modern software development, from manual server configuration to automated, version-controlled infrastructure management.",
+    "date": "May 26, 2025",
+    "author": "Ndung'u Kinyanjui",
+    "image": "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1050&q=80",
+    "excerpt": "Explore how Infrastructure as Code is transforming DevOps practices and revolutionizing the way we manage infrastructure in modern software development.",
     "tags": [
       "InfrastructureAsCode",
       "Terraform",
       "DevOps",
       "CloudComputing",
-      "AWS"
+      "AWS",
+      "30DayTerraformChallenge",
+      "IaC",
+      "CloudEngineering"
     ]
   }
 ]
