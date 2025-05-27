@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const matter = require("gray-matter");
 
-const blogsDir = path.join(__dirname, "../blogs");
+const blogsDir = path.join(__dirname, "../blog/posts");
 const postsJsonPath = path.join(blogsDir, "posts.json");
 
 function generatePostsJson() {

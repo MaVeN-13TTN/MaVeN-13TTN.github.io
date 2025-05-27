@@ -40,9 +40,9 @@ The portfolio includes a complete blog system with the following features:
 
 To add a new blog post:
 
-1. **Create a new markdown file** in the `blogs/` directory:
+1. **Create a new markdown file** in the `blog/posts/` directory:
    ```bash
-   touch blogs/my-new-post.md
+   touch blog/posts/my-new-post.md
    ```
 
 2. **Add frontmatter and content** to your markdown file:
@@ -67,13 +67,14 @@ To add a new blog post:
    ```bash
    npm run generate-posts
    ```
-   Or use the convenient script:
+   Or use the convenient build script:
    ```bash
-   ./generate-posts.sh
+   ./scripts/build.sh
    ```
 
 4. **Test your blog locally**:
-   - Open `blog.html` in your browser
+   - Open `index.html` in your browser (main portfolio)
+   - Navigate to the blog section or open `blog/index.html` directly
    - Check that your post appears correctly
    - Test search and filtering functionality
 
@@ -86,18 +87,27 @@ To add a new blog post:
 
 ### Blog File Structure
 ```
-blogs/
-├── posts.json              # Auto-generated blog metadata
-├── my-first-post.md        # Sample blog post
-└── infrastructure-as-code-revolutionizing-devops.md
+blog/
+├── index.html              # Blog listing page
+├── post.html               # Individual post page
+└── posts/                  # Blog posts directory
+    ├── posts.json          # Auto-generated blog metadata
+    ├── my-first-post.md    # Sample blog post
+    └── infrastructure-as-code-revolutionizing-devops.md
+
+assets/
+├── css/
+│   ├── style.css           # Portfolio styles
+│   └── blog.css            # Blog-specific styles
+├── js/
+│   ├── script.js           # Portfolio functionality
+│   └── blog.js             # Blog functionality
+└── images/
+    └── favicon.svg         # Site favicon
 
 scripts/
-└── generate-posts.js       # Script to generate posts.json
-
-blog.html                   # Main blog page
-blog-details.html          # Individual post page
-blog.css                   # Blog-specific styles
-blog.js                    # Blog functionality
+├── generate-posts.js       # Script to generate posts.json
+└── build.sh                # Main build script
 ```
 
 ### Required Frontmatter Fields
@@ -174,7 +184,7 @@ The portfolio is optimized for:
 ## 📦 Scripts
 
 - `npm run generate-posts` - Generate posts.json from markdown files
-- `./generate-posts.sh` - Convenient script with progress indicators
+- `./scripts/build.sh` - Complete build script with progress indicators
 - `npm run build` - Alias for generate-posts (future extensibility)
 
 ## 📝 Contact

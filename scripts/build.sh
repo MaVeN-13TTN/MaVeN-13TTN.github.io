@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "🚀 Auto-generating posts.json from markdown files..."
+echo "🚀 Building portfolio and generating posts.json..."
 
 # Check if Node.js is installed
 if ! command -v node &> /dev/null; then
@@ -17,9 +17,10 @@ fi
 # Generate posts.json
 npm run generate-posts
 
-echo "✅ Done! Your posts.json has been updated."
+echo "✅ Done! Your portfolio is ready."
 echo "💡 Next steps:"
-echo "   1. Review the generated posts.json"
-echo "   2. Test your blog at blog.html"
-echo "   3. Commit and push your changes"
+echo "   1. Review the generated blog/posts/posts.json"
+echo "   2. Test your portfolio at index.html"
+echo "   3. Test your blog at blog/index.html"
+echo "   4. Commit and push your changes"
 echo "💡 You can now commit and push your changes."

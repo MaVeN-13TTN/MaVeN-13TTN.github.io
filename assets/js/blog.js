@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Load blog posts from posts.json
   async function loadBlogPosts() {
     try {
-      const response = await fetch("blogs/posts.json");
+      const response = await fetch("posts/posts.json");
       if (!response.ok) {
         throw new Error("Failed to load posts.json");
       }
@@ -30,21 +30,21 @@ document.addEventListener("DOMContentLoaded", () => {
       const postCard = `
                 <article class="blog-card" data-slug="${post.slug}">
                     <div class="blog-card-image">
-                        <a href="blog-details.html?post=${post.slug}">
+                        <a href="post.html?post=${post.slug}">
                             <img src="${post.image}" alt="${post.title}">
                         </a>
                     </div>
                     <div class="blog-card-content">
                         <span class="blog-card-category">${post.category}</span>
                         <h3 class="blog-card-title">
-                            <a href="blog-details.html?post=${post.slug}">${post.title}</a>
+                            <a href="post.html?post=${post.slug}">${post.title}</a>
                         </h3>
                         <div class="blog-card-meta">
                             <span><i class="fas fa-calendar-alt"></i> ${post.date}</span>
                             <span><i class="fas fa-user"></i> ${post.author}</span>
                         </div>
                         <p class="blog-card-excerpt">${post.excerpt}</p>
-                        <a href="blog-details.html?post=${post.slug}" class="blog-card-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        <a href="post.html?post=${post.slug}" class="blog-card-read-more">Read More <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </article>
             `;
@@ -140,7 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
     related.forEach((post) => {
       const listItem = document.createElement("li");
       const link = document.createElement("a");
-      link.href = `blog-details.html?post=${post.slug}`;
+      link.href = `post.html?post=${post.slug}`;
       link.textContent = post.title;
       listItem.appendChild(link);
       relatedPostsList.appendChild(listItem);
@@ -179,7 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (blogPostContent) {
-      // We are on blog-details.html
+      // We are on post.html
       const urlParams = new URLSearchParams(window.location.search);
       const postSlug = urlParams.get("post");
       if (postSlug) {
