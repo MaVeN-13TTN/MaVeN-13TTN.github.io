@@ -76,7 +76,30 @@ document.addEventListener("DOMContentLoaded", () => {
           );
         }
         const markdown = await response.text();
-        const htmlContent = marked.parse(markdown);
+
+        // Remove frontmatter (YAML between --- delimiters)
+        // This regex handles various whitespace scenarios and ensures clean removal
+        let cleanMarkdown = markdown;
+        const frontmatterRegex = /^---\s*\r?\n([\s\S]*?)\r?\n---\s*\r?\n/;
+
+        if (frontmatterRegex.test(markdown)) {
+          cleanMarkdown = markdown.replace(frontmatterRegex, "").trim();
+          console.log("Frontmatter removed successfully");
+        } else {
+          console.log("No frontmatter found or different format detected");
+        }
+
+        // Remove the first H1 heading and any following content until the first H2
+        // This removes duplicate titles, "Published on" lines, and any other content before first section
+        const titleSectionRegex = /^#\s+.+?(?=##)/ms;
+        cleanMarkdown = cleanMarkdown.replace(titleSectionRegex, "").trim();
+
+        // Additional cleanup for "Published on" lines that might remain
+        cleanMarkdown = cleanMarkdown
+          .replace(/^\*\*Published on.*?\*\*\s*$/gm, "")
+          .trim();
+
+        const htmlContent = marked.parse(cleanMarkdown);
 
         const postHTML = `
                     <img src="${post.image}" alt="${post.title}" class="post-image">
