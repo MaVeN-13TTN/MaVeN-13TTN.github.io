@@ -183,6 +183,9 @@
   border-radius: 12px;
   box-shadow: var(--box-shadow);
   border: 1px solid var(--border-color);
+  overflow-x: hidden;
+  word-wrap: break-word;
+  text-align: left;
 }
 
 #blog-post-content .post-title {
@@ -210,7 +213,9 @@
   max-height: 400px;
   object-fit: cover;
   border-radius: 8px;
-  margin-bottom: 1.5rem;
+  margin: 0 auto 1.5rem auto;
+  display: block;
+  box-shadow: var(--box-shadow);
 }
 
 #blog-post-content .post-body h1,
@@ -288,6 +293,98 @@
   border-radius: 4px;
   font-family: "Fira Code", monospace;
   font-size: 0.9em;
+}
+
+/* Image Container and Sizing Rules */
+#blog-post-content .post-body img {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.5rem auto;
+  border-radius: 8px;
+  box-shadow: var(--box-shadow);
+  object-fit: cover;
+  max-height: 400px;
+}
+
+/* Image Container Wrapper */
+#blog-post-content .post-body p img {
+  margin: 1.5rem 0;
+}
+
+/* Ensure images don't break layout */
+#blog-post-content .post-body figure {
+  margin: 1.5rem auto;
+  text-align: center;
+  max-width: 100%;
+}
+
+#blog-post-content .post-body figure img {
+  margin: 0 auto 0.5rem auto;
+}
+
+#blog-post-content .post-body figcaption {
+  font-size: 0.9rem;
+  color: var(--muted-text);
+  font-style: italic;
+  text-align: center;
+}
+
+/* Additional Layout Fixes */
+#blog-post-content .post-body {
+  overflow-x: hidden;
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
+/* Ensure code blocks don't cause horizontal overflow */
+#blog-post-content .post-body pre {
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Fix any potential alignment issues with lists */
+#blog-post-content .post-body ul,
+#blog-post-content .post-body ol {
+  padding-left: 1.5rem;
+  margin-left: 0;
+  text-align: left;
+}
+
+/* Ensure all text content is left-aligned */
+#blog-post-content .post-body p,
+#blog-post-content .post-body h1,
+#blog-post-content .post-body h2,
+#blog-post-content .post-body h3,
+#blog-post-content .post-body h4,
+#blog-post-content .post-body h5,
+#blog-post-content .post-body h6 {
+  text-align: left;
+  max-width: 100%;
+}
+
+/* Force override any inherited alignment issues */
+#blog-post-content .post-body * {
+  text-align: left !important;
+  max-width: 100%;
+}
+
+/* Exception for centered elements that should remain centered */
+#blog-post-content .post-body img,
+#blog-post-content .post-body figure,
+#blog-post-content .post-body figcaption {
+  text-align: center !important;
+}
+
+/* Ensure proper container behavior */
+#blog-post-content .post-body .language-bash,
+#blog-post-content .post-body .language-json,
+#blog-post-content .post-body .language-terraform {
+  text-align: left !important;
+  direction: ltr;
 }
 
 .blog-sidebar {

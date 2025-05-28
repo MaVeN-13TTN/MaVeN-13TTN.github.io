@@ -160,4 +160,6 @@ The question isn't whether you should adopt IaC – it's how quickly you can get
 
 📧 Follow my **30-Day Terraform Challenge** journey on GitHub and connect with me on X for daily updates and insights.
 
+*This blog post is part of the 30-Day Terraform Challenge I am a part of. Organized by the AWS AI/ML UG and the Meru HUG*
+
 **Tags:** `#InfrastructureAsCode` `#Terraform` `#DevOps` `#CloudComputing` `#AWS` `#30DayTerraformChallenge` `#IaC` `#CloudEngineering`

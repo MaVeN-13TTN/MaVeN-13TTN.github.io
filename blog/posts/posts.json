@@ -1,5 +1,25 @@
 [
   {
+    "slug": "advanced-terraform-aws-setup-blog",
+    "title": "🚀 Advanced Terraform & AWS Setup: Professional Development Environment ⚡",
+    "category": "DevOps",
+    "date": "May 28, 2025",
+    "author": "Ndung'u Kinyanjui",
+    "image": "../assets/images/blog_images/tf-aws.png",
+    "excerpt": "A comprehensive guide for Ubuntu 24.04 users to establish a production-ready Terraform and AWS development environment with professional best practices.",
+    "tags": [
+      "Terraform",
+      "AWS",
+      "DevOps",
+      "InfrastructureAsCode",
+      "Ubuntu",
+      "TerraformSetup",
+      "CloudEngineering",
+      "30DayTerraformChallenge",
+      "Tutorial"
+    ]
+  },
+  {
     "slug": "infrastructure-as-code-revolutionizing-devops",
     "title": "Infrastructure as Code: Revolutionizing DevOps Practices 🚀",
     "category": "DevOps",
