@@ -1,0 +1,26 @@
+{
+  "name": "portfolio-website",
+  "version": "1.0.0",
+  "description": "Personal portfolio website for Ndung'u Kinyanjui - Data Scientist & AWS Certified Cloud Engineer",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx http-server -p 8080",
+    "build": "echo 'No build process required for static site'",
+    "deploy": "gh-pages -d ."
+  },
+  "keywords": [
+    "portfolio",
+    "data-science",
+    "cloud-engineer",
+    "aws"
+  ],
+  "author": "Ndung'u Kinyanjui",
+  "license": "MIT",
+  "dependencies": {
+    "@phosphor-icons/web": "^2.1.1"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.1.1",
+    "http-server": "^14.1.1"
+  }
+}

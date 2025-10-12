@@ -419,7 +419,7 @@ section {
 /* Footer */
 footer {
   text-align: center;
-  padding: 5rem 5%;
+  padding: 5rem 5% 3rem 5%;
   background: linear-gradient(
     180deg,
     var(--color-background),
@@ -450,8 +450,32 @@ footer .btn {
 }
 
 footer .social-icons {
-  margin-top: 2rem;
+  margin-top: 2.5rem;
   margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+footer .social-icons a {
+  color: var(--color-muted);
+  font-size: 2rem;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid var(--color-deep-indigo);
+}
+
+footer .social-icons a:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(194, 49, 201, 0.4);
 }
 
 footer .copyright {
