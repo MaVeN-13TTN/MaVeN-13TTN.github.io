@@ -702,6 +702,54 @@ footer .social-icons a:hover {
   box-shadow: 0 5px 20px rgba(194, 49, 201, 0.4);
 }
 
+/* Custom Tooltips for Social Icons */
+footer .social-icons a {
+  position: relative;
+}
+
+footer .social-icons a::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) scale(0.8);
+  background: linear-gradient(
+    135deg,
+    var(--color-deep-indigo),
+    var(--color-electric-blue)
+  );
+  color: var(--color-text);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 400;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(76, 93, 215, 0.3);
+  border: 1px solid var(--color-electric-blue);
+}
+
+footer .social-icons a::after {
+  content: "";
+  position: absolute;
+  bottom: calc(100% + 2px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 8px solid transparent;
+  border-top-color: var(--color-electric-blue);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+footer .social-icons a:hover::before,
+footer .social-icons a:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
 footer .copyright {
   font-size: 0.85rem;
   color: var(--color-muted);
