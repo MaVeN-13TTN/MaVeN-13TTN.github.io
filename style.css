@@ -1,12 +1,18 @@
 :root {
-  --primary-blue: #4c5dd7;
-  --dark-purple: #260b68;
-  --vibrant-pink: #c231c9;
-  --deep-blue: #1d0225;
-  --light-blue: #68a2eb;
-  --background-dark: #121212;
-  --text-light: #eaeaea;
-  --text-muted: #a0a0a0;
+  /* Primary Colors */
+  --color-electric-blue: #4c5dd7;
+  --color-deep-indigo: #260b68;
+  --color-neon-magenta: #c231c9;
+  --color-midnight-purple: #1d0225;
+  --color-soft-sky-blue: #68a2eb;
+
+  /* Suggested Usage */
+  --color-background: var(--color-midnight-purple);
+  --color-primary: var(--color-electric-blue);
+  --color-accent: var(--color-neon-magenta);
+  --color-text: #e6e6fa; /* light lavender for readability */
+  --color-hover: var(--color-soft-sky-blue);
+  --color-muted: #9b9bb5; /* muted lavender for secondary text */
 }
 
 * {
@@ -20,9 +26,9 @@ html {
 }
 
 body {
-  font-family: "Poppins", sans-serif;
-  background-color: var(--background-dark);
-  color: var(--text-light);
+  font-family: "Lato", sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-text);
 }
 
 /* Header & Navigation */
@@ -30,7 +36,7 @@ header {
   position: fixed;
   width: 100%;
   padding: 1.5rem 5%;
-  background: rgba(18, 18, 18, 0.8);
+  background: rgba(29, 2, 37, 0.9);
   backdrop-filter: blur(10px);
   z-index: 1000;
 }
@@ -42,9 +48,10 @@ nav {
 }
 
 .logo a {
-  font-weight: 700;
+  font-family: "BBH Sans Bartle", sans-serif;
+  font-weight: 400;
   font-size: 1.5rem;
-  color: var(--light-blue);
+  color: var(--color-soft-sky-blue);
   text-decoration: none;
 }
 
@@ -55,14 +62,30 @@ nav {
 }
 
 .nav-links a {
-  color: var(--text-light);
+  color: var(--color-text);
   text-decoration: none;
   font-weight: 400;
+  position: relative;
   transition: color 0.3s ease;
 }
 
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-accent);
+  transition: width 0.3s ease;
+}
+
 .nav-links a:hover {
-  color: var(--vibrant-pink);
+  color: var(--color-accent);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
 }
 
 /* Main Content & Sections */
@@ -81,8 +104,13 @@ section {
 /* Hero Section */
 #home {
   text-align: center;
-  background: url("https://via.placeholder.com/1920x1080") no-repeat center
-    center/cover; /* Replace with your hero image */
+  background: linear-gradient(
+      135deg,
+      var(--color-midnight-purple) 0%,
+      var(--color-deep-indigo) 100%
+    ),
+    url("https://via.placeholder.com/1920x1080") no-repeat center center/cover;
+  background-blend-mode: overlay;
   position: relative;
 }
 
@@ -93,49 +121,87 @@ section {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(29, 2, 37, 0.7); /* Dark overlay */
+  background: rgba(29, 2, 37, 0.7);
+  z-index: 1;
 }
 
 .hero-content {
   position: relative;
   z-index: 2;
+  animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 #home h1 {
+  font-family: "BBH Sans Bogle", sans-serif;
   font-size: 4rem;
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: 2px;
+  color: var(--color-text);
+  margin-bottom: 1rem;
+  text-shadow: 0 0 20px rgba(104, 162, 235, 0.3);
 }
 
 #home h2 {
   font-size: 1.5rem;
   font-weight: 300;
-  color: var(--light-blue);
+  color: var(--color-soft-sky-blue);
+  margin-bottom: 2rem;
+}
+
+.hero-pitch {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  max-width: 700px;
+  margin: 0 auto 2.5rem auto;
+  color: var(--color-text);
+  font-weight: 300;
+}
+
+.hero-buttons {
   margin-bottom: 2rem;
 }
 
 .btn {
+  display: inline-block;
   padding: 0.8rem 2rem;
-  border: 2px solid var(--vibrant-pink);
-  color: var(--vibrant-pink);
+  border: 2px solid var(--color-accent);
+  background-color: transparent;
+  color: var(--color-accent);
   text-decoration: none;
   font-weight: 600;
+  border-radius: 8px;
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .btn:hover {
-  background-color: var(--vibrant-pink);
-  color: var(--text-light);
+  background-color: var(--color-accent);
+  color: white;
+  box-shadow: 0 0 20px rgba(194, 49, 201, 0.5);
+  transform: translateY(-2px);
 }
 
 .btn-secondary {
-  border-color: var(--light-blue);
-  color: var(--light-blue);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
   margin-left: 1rem;
 }
 
 .btn-secondary:hover {
-  background-color: var(--light-blue);
+  background-color: var(--color-primary);
+  color: white;
+  box-shadow: 0 0 20px rgba(76, 93, 215, 0.5);
 }
 
 .social-icons {
@@ -144,13 +210,13 @@ section {
 }
 
 .social-icons a {
-  color: var(--text-muted);
+  color: var(--color-muted);
   margin: 0 1rem;
   transition: color 0.3s ease;
 }
 
 .social-icons a:hover {
-  color: var(--vibrant-pink);
+  color: var(--color-accent);
 }
 
 /* About Section */
@@ -163,31 +229,42 @@ section {
 }
 
 .about-text h2 {
+  font-family: "BBH Sans Bogle", sans-serif;
   font-size: 2.5rem;
-  color: var(--light-blue);
+  font-weight: 400;
+  color: var(--color-soft-sky-blue);
   margin-bottom: 2rem;
 }
 
 .about-text p {
-  color: var(--text-muted);
+  color: var(--color-muted);
   margin-bottom: 1rem;
   line-height: 1.8;
 }
 
 .about-text a {
-  color: var(--vibrant-pink);
+  color: var(--color-accent);
   text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.about-text a:hover {
+  color: var(--color-hover);
 }
 
 .about-image img {
   max-width: 100%;
   height: auto;
   filter: grayscale(100%);
-  transition: filter 0.5s ease;
+  transition: filter 0.5s ease, transform 0.3s ease;
+  border-radius: 8px;
+  border: 3px solid var(--color-deep-indigo);
 }
 
 .about-image img:hover {
   filter: grayscale(0%);
+  transform: scale(1.02);
+  border-color: var(--color-accent);
 }
 
 /* Resume Section */
@@ -200,10 +277,12 @@ section {
 }
 
 .resume-column h3 {
+  font-family: "BBH Sans Bogle", sans-serif;
   font-size: 1.5rem;
-  color: var(--light-blue);
+  font-weight: 400;
+  color: var(--color-soft-sky-blue);
   margin-bottom: 2rem;
-  border-bottom: 2px solid var(--vibrant-pink);
+  border-bottom: 2px solid var(--color-accent);
   padding-bottom: 0.5rem;
   display: inline-block;
 }
@@ -216,41 +295,88 @@ section {
 .skill-bar {
   width: 100%;
   height: 8px;
-  background-color: var(--deep-blue);
+  background-color: var(--color-deep-indigo);
   border-radius: 4px;
   margin-bottom: 1rem;
+  overflow: hidden;
 }
 
 .skill-level {
   height: 100%;
-  background-color: var(--vibrant-pink);
+  background: linear-gradient(90deg, var(--color-accent), var(--color-primary));
   border-radius: 4px;
+  transition: width 1s ease-out;
+  box-shadow: 0 0 10px rgba(194, 49, 201, 0.5);
+}
+
+.skill {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.skill.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.resume-column:nth-child(2) {
+  position: relative;
+  padding-left: 2.5rem;
+}
+
+.resume-column:nth-child(2)::before {
+  content: "";
+  position: absolute;
+  left: 0.3rem;
+  top: 3rem;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--color-deep-indigo), transparent);
 }
 
 .experience-item {
   position: relative;
   padding-left: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1rem;
 }
 
 .experience-item::before {
   content: "";
   position: absolute;
-  left: 0;
+  left: -2.2rem;
   top: 5px;
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  background-color: var(--vibrant-pink);
-  border: 2px solid var(--light-blue);
+  background-color: var(--color-accent);
+  border: 2px solid var(--color-primary);
+  box-shadow: 0 0 10px rgba(194, 49, 201, 0.6);
+  z-index: 1;
 }
 
 .experience-item h4 {
+  font-family: "BBH Sans Bogle", sans-serif;
   font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: 0.3rem;
+}
+
+.experience-item .job-meta {
+  color: var(--color-soft-sky-blue);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.experience-item .job-description {
+  color: var(--color-muted);
+  line-height: 1.6;
+  font-size: 0.95rem;
 }
 
 .experience-item p {
-  color: var(--text-muted);
+  color: var(--color-muted);
 }
 
 .resume-column ul {
@@ -261,16 +387,77 @@ section {
   margin-bottom: 0.5rem;
 }
 
+.competency {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.competency::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: var(--color-soft-sky-blue);
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.competency h4 {
+  font-family: "BBH Sans Bogle", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+
+.competency p {
+  color: var(--color-muted);
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+
 /* Footer */
 footer {
   text-align: center;
-  padding: 4rem 5%;
-  background-color: var(--deep-blue);
+  padding: 5rem 5%;
+  background: linear-gradient(
+    180deg,
+    var(--color-background),
+    var(--color-deep-indigo)
+  );
+  border-top: 2px solid var(--color-deep-indigo);
+}
+
+footer h3 {
+  font-family: "BBH Sans Bogle", sans-serif;
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--color-soft-sky-blue);
+  margin-bottom: 1rem;
 }
 
 footer p {
+  margin-bottom: 2.5rem;
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+}
+
+footer .btn {
   margin-bottom: 2rem;
-  font-size: 1.2rem;
+}
+
+footer .social-icons {
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+footer .copyright {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  margin-top: 2rem;
 }
 
 /* Responsive Design */
@@ -283,6 +470,12 @@ footer p {
   }
   #home h1 {
     font-size: 2.5rem;
+  }
+  .hero-pitch {
+    font-size: 1rem;
+  }
+  .resume-column:nth-child(2)::before {
+    display: none;
   }
 }
 .hidden {

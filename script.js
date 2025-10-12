@@ -29,4 +29,22 @@ document.addEventListener("DOMContentLoaded", function () {
     section.classList.add("hidden");
     observer.observe(section);
   });
+
+  // Animate skill bars on scroll
+  const skillObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    },
+    {
+      threshold: 0.5,
+    }
+  );
+
+  document.querySelectorAll(".skill").forEach((skill) => {
+    skillObserver.observe(skill);
+  });
 });
