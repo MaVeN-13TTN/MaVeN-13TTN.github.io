@@ -104,12 +104,20 @@ For easier deployment, you can replace the local Phosphor Icons scripts in `inde
 
 ```
 trx/
-├── index.html          # Main HTML file
-├── style.css           # Stylesheet
-├── script.js           # JavaScript interactions
-├── package.json        # Node dependencies
-├── .gitignore         # Git ignore rules
-└── README.md          # This file
+├── assets/
+│   ├── css/
+│   │   └── style.css       # Main stylesheet
+│   ├── js/
+│   │   └── script.js       # JavaScript interactions
+│   └── images/
+│       └── .gitkeep        # Placeholder for images
+├── node_modules/           # Dependencies (not committed)
+├── .git/                   # Git repository
+├── .gitignore             # Git ignore rules
+├── index.html             # Main HTML file
+├── package.json           # Node dependencies
+├── package-lock.json      # Dependency lock file
+└── README.md              # This file
 ```
 
 ## Customization
