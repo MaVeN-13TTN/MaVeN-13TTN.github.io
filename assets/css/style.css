@@ -255,16 +255,12 @@ section {
 .about-image img {
   max-width: 100%;
   height: auto;
-  filter: grayscale(100%);
-  transition: filter 0.5s ease, transform 0.3s ease;
   border-radius: 8px;
-  border: 3px solid var(--color-deep-indigo);
+  transition: transform 0.3s ease;
 }
 
 .about-image img:hover {
-  filter: grayscale(0%);
   transform: scale(1.02);
-  border-color: var(--color-accent);
 }
 
 /* Resume Section */
@@ -607,24 +603,249 @@ footer .copyright {
   margin-top: 2rem;
 }
 
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1001;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: var(--color-text);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
 /* Responsive Design */
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+  section {
+    padding: 4rem 4%;
+  }
+
+  .resume-content {
+    gap: 2rem;
+  }
+
+  .certifications-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
+
+/* Mobile and Small Tablets (max-width: 768px) */
 @media (max-width: 768px) {
+  /* Navigation */
+  .hamburger {
+    display: flex;
+  }
+
   .nav-links {
-    display: none; /* Can be enhanced with a hamburger menu */
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    max-width: 300px;
+    height: 100vh;
+    background: rgba(29, 2, 37, 0.98);
+    backdrop-filter: blur(10px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+    transition: right 0.3s ease;
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
   }
-  .about-content {
-    grid-template-columns: 1fr;
+
+  .nav-links.active {
+    right: 0;
   }
+
+  .nav-links li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-links a {
+    font-size: 1.2rem;
+    display: block;
+    padding: 0.5rem;
+  }
+
+  /* Sections */
+  section {
+    padding: 3rem 5%;
+    min-height: auto;
+  }
+
+  /* Hero Section */
+  #home {
+    min-height: 100vh;
+  }
+
   #home h1 {
     font-size: 2.5rem;
+    letter-spacing: 1px;
   }
+
+  #home h2 {
+    font-size: 1.2rem;
+  }
+
   .hero-pitch {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    padding: 0 1rem;
   }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .btn-secondary {
+    margin-left: 0;
+  }
+
+  /* About Section */
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .about-text h2 {
+    font-size: 2rem;
+  }
+
+  .about-image {
+    order: -1;
+  }
+
+  .about-image img {
+    max-width: 80%;
+    margin: 0 auto;
+    display: block;
+  }
+
+  /* Resume Section */
+  .resume-content {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
   .resume-column:nth-child(2)::before {
     display: none;
   }
+
+  /* Certifications */
+  .certifications-content h2 {
+    font-size: 2rem;
+  }
+
+  .certifications-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Footer */
+  footer {
+    padding: 3rem 5% 2rem 5%;
+  }
+
+  footer h3 {
+    font-size: 1.5rem;
+  }
+
+  footer p {
+    font-size: 1rem;
+  }
+
+  footer .social-icons {
+    gap: 1.5rem;
+  }
+
+  footer .social-icons a {
+    width: 45px;
+    height: 45px;
+    font-size: 1.8rem;
+  }
 }
+
+/* Small Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+  header {
+    padding: 1rem 4%;
+  }
+
+  .logo a {
+    font-size: 1.2rem;
+  }
+
+  #home h1 {
+    font-size: 2rem;
+  }
+
+  #home h2 {
+    font-size: 1rem;
+  }
+
+  .hero-pitch {
+    font-size: 0.9rem;
+  }
+
+  .btn {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .about-text h2,
+  .certifications-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .resume-column h3 {
+    font-size: 1.3rem;
+  }
+
+  .certification-card {
+    padding: 1.5rem;
+  }
+
+  .cert-badge img {
+    width: 120px;
+    height: 120px;
+  }
+
+  footer .social-icons {
+    gap: 1rem;
+  }
+
+  footer .social-icons a {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+}
+
+/* Animations */
 .hidden {
   opacity: 0;
   transform: translateY(50px);

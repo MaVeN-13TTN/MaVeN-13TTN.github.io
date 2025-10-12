@@ -1,7 +1,35 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // Hamburger menu functionality
+  const hamburger = document.querySelector(".hamburger");
+  const navLinks = document.querySelector(".nav-links");
+  const navItems = document.querySelectorAll(".nav-links a");
+
+  hamburger.addEventListener("click", function () {
+    hamburger.classList.toggle("active");
+    navLinks.classList.toggle("active");
+  });
+
+  // Close menu when clicking on a nav link
+  navItems.forEach((item) => {
+    item.addEventListener("click", function () {
+      hamburger.classList.remove("active");
+      navLinks.classList.remove("active");
+    });
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener("click", function (event) {
+    if (!hamburger.contains(event.target) && !navLinks.contains(event.target)) {
+      hamburger.classList.remove("active");
+      navLinks.classList.remove("active");
+    }
+  });
+
   // Smooth scroll for navigation links
-  const navLinks = document.querySelectorAll(".nav-links a, .hero-buttons a");
-  navLinks.forEach((link) => {
+  const allNavLinks = document.querySelectorAll(
+    ".nav-links a, .hero-buttons a"
+  );
+  allNavLinks.forEach((link) => {
     link.addEventListener("click", function (e) {
       e.preventDefault();
       const targetId = this.getAttribute("href");
