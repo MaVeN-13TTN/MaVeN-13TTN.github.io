@@ -937,21 +937,7 @@ footer .social-icons a::before {
   border: 1px solid var(--color-electric-blue);
 }
 
-footer .social-icons a::after {
-  content: "";
-  position: absolute;
-  bottom: calc(100% + 2px);
-  left: 50%;
-  transform: translateX(-50%);
-  border: 8px solid transparent;
-  border-top-color: var(--color-electric-blue);
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.3s ease;
-}
-
-footer .social-icons a:hover::before,
-footer .social-icons a:hover::after {
+footer .social-icons a:hover::before {
   opacity: 1;
   transform: translateX(-50%) scale(1);
 }
