@@ -242,14 +242,14 @@ document.addEventListener("DOMContentLoaded", function () {
     updateSlide();
   });
 
-  // Auto-play carousel
+  // Auto-play carousel (increased to 7 seconds for better mobile readability)
   let autoplay = setInterval(() => {
     if (!isTransitioning) {
       isTransitioning = true;
       currentIndex++;
       updateSlide();
     }
-  }, 5000);
+  }, 7000);
 
   // Pause autoplay on hover
   const carouselContainer = document.querySelector(".carousel-container");
@@ -264,7 +264,7 @@ document.addEventListener("DOMContentLoaded", function () {
         currentIndex++;
         updateSlide();
       }
-    }, 5000);
+    }, 7000);
   });
 
   // Touch/Swipe support for mobile
@@ -296,7 +296,7 @@ document.addEventListener("DOMContentLoaded", function () {
           currentIndex++;
           updateSlide();
         }
-      }, 5000);
+      }, 7000);
     },
     { passive: true }
   );
@@ -322,4 +322,29 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   }
+
+  // Keyboard navigation for carousel accessibility
+  document.addEventListener("keydown", (e) => {
+    if (
+      document.activeElement === nextButton ||
+      document.activeElement === prevButton ||
+      trackContainer.contains(document.activeElement)
+    ) {
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        if (!isTransitioning) {
+          isTransitioning = true;
+          currentIndex--;
+          updateSlide();
+        }
+      } else if (e.key === "ArrowRight") {
+        e.preventDefault();
+        if (!isTransitioning) {
+          isTransitioning = true;
+          currentIndex++;
+          updateSlide();
+        }
+      }
+    }
+  });
 });
