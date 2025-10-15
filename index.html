@@ -259,7 +259,7 @@
     <footer id="contact">
         <h3>Interested in working together?</h3>
         <p>I'm actively seeking opportunities to help build the future of data-driven technology. If you have a project in mind or believe we could innovate together, I'd love to connect.</p>
-        <a href="mailto:kinyanjuindungu1324@gmail.com" class="btn">Get in Touch</a>
+        <button class="btn" id="contactBtn">Get in Touch</button>
         <div class="social-icons">
             <a href="https://www.linkedin.com/in/ndungu-kinyanjui/" target="_blank" rel="noopener" aria-label="LinkedIn" data-tooltip="Professional Updates"><i class="ph ph-linkedin-logo"></i></a>
             <a href="https://github.com/MaVeN-13TTN" target="_blank" rel="noopener" aria-label="GitHub" data-tooltip="GitHub Projects"><i class="ph ph-github-logo"></i></a>
@@ -269,6 +269,36 @@
         <p class="copyright">&copy; 2025 NDUNG'U KINYANJUI. All rights reserved.</p>
     </footer>
 
+    <!-- Contact Form Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close modal">&times;</button>
+            <h3>Get in Touch</h3>
+            <p class="modal-subtitle">Let's discuss your project or opportunity</p>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Your name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required placeholder="What's this about?">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project or opportunity..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-submit">Send Message</button>
+                <div id="formStatus" class="form-status"></div>
+            </form>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="assets/js/script.js"></script>
 </body>
 </html>
