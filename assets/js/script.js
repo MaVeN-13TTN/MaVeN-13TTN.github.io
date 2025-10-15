@@ -89,17 +89,20 @@ document.addEventListener("DOMContentLoaded", function () {
   // Open modal
   contactBtn.addEventListener("click", function () {
     contactModal.classList.add("active");
+    document.body.style.overflow = "hidden"; // Prevent background scroll on mobile
   });
 
   // Close modal
   modalClose.addEventListener("click", function () {
     contactModal.classList.remove("active");
+    document.body.style.overflow = ""; // Restore scrolling
   });
 
   // Close modal when clicking outside
   contactModal.addEventListener("click", function (e) {
     if (e.target === contactModal) {
       contactModal.classList.remove("active");
+      document.body.style.overflow = ""; // Restore scrolling
     }
   });
 
@@ -107,6 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape" && contactModal.classList.contains("active")) {
       contactModal.classList.remove("active");
+      document.body.style.overflow = ""; // Restore scrolling
     }
   });
 
@@ -131,6 +135,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
           setTimeout(function () {
             contactModal.classList.remove("active");
+            document.body.style.overflow = ""; // Restore scrolling
             formStatus.className = "form-status";
           }, 3000);
         },
@@ -261,4 +266,60 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }, 5000);
   });
+
+  // Touch/Swipe support for mobile
+  let touchStartX = 0;
+  let touchEndX = 0;
+  const minSwipeDistance = 50;
+
+  const trackContainer = document.querySelector(".carousel-track-container");
+
+  trackContainer.addEventListener(
+    "touchstart",
+    (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      clearInterval(autoplay); // Pause autoplay on touch
+    },
+    { passive: true }
+  );
+
+  trackContainer.addEventListener(
+    "touchend",
+    (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+
+      // Restart autoplay after touch
+      autoplay = setInterval(() => {
+        if (!isTransitioning) {
+          isTransitioning = true;
+          currentIndex++;
+          updateSlide();
+        }
+      }, 5000);
+    },
+    { passive: true }
+  );
+
+  function handleSwipe() {
+    const swipeDistance = touchEndX - touchStartX;
+
+    if (Math.abs(swipeDistance) > minSwipeDistance) {
+      if (swipeDistance > 0) {
+        // Swipe right - go to previous
+        if (!isTransitioning) {
+          isTransitioning = true;
+          currentIndex--;
+          updateSlide();
+        }
+      } else {
+        // Swipe left - go to next
+        if (!isTransitioning) {
+          isTransitioning = true;
+          currentIndex++;
+          updateSlide();
+        }
+      }
+    }
+  }
 });
