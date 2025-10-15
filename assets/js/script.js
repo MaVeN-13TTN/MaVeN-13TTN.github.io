@@ -145,4 +145,120 @@ document.addEventListener("DOMContentLoaded", function () {
         submitBtn.disabled = false;
       });
   });
+
+  // ALX Certificates Carousel
+  const track = document.querySelector(".carousel-track");
+  const slides = Array.from(track.children);
+  const nextButton = document.querySelector(".carousel-btn.next");
+  const prevButton = document.querySelector(".carousel-btn.prev");
+  const indicatorsContainer = document.querySelector(".carousel-indicators");
+
+  let currentIndex = 0;
+  let isTransitioning = false;
+
+  // Clone first and last slides for infinite loop effect
+  const firstClone = slides[0].cloneNode(true);
+  const lastClone = slides[slides.length - 1].cloneNode(true);
+
+  track.appendChild(firstClone);
+  track.insertBefore(lastClone, slides[0]);
+
+  const allSlides = Array.from(track.children);
+  const slideWidth = allSlides[0].getBoundingClientRect().width;
+
+  // Start at the first real slide (index 1 because of the clone at start)
+  currentIndex = 1;
+  track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+  // Create indicators
+  slides.forEach((_, index) => {
+    const indicator = document.createElement("div");
+    indicator.classList.add("indicator");
+    if (index === 0) indicator.classList.add("active");
+    indicator.addEventListener("click", () => goToSlide(index));
+    indicatorsContainer.appendChild(indicator);
+  });
+
+  const indicators = Array.from(indicatorsContainer.children);
+
+  function updateIndicators() {
+    let actualIndex = currentIndex - 1;
+    if (actualIndex < 0) actualIndex = slides.length - 1;
+    if (actualIndex >= slides.length) actualIndex = 0;
+
+    indicators.forEach((ind, idx) => {
+      ind.classList.toggle("active", idx === actualIndex);
+    });
+  }
+
+  function updateSlide(smooth = true) {
+    if (smooth) {
+      track.style.transition = "transform 0.5s ease-in-out";
+    } else {
+      track.style.transition = "none";
+    }
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    updateIndicators();
+  }
+
+  function handleTransitionEnd() {
+    if (currentIndex === 0) {
+      // We're at the last clone, jump to the real last slide
+      currentIndex = slides.length;
+      updateSlide(false);
+    } else if (currentIndex === allSlides.length - 1) {
+      // We're at the first clone, jump to the real first slide
+      currentIndex = 1;
+      updateSlide(false);
+    }
+    isTransitioning = false;
+  }
+
+  track.addEventListener("transitionend", handleTransitionEnd);
+
+  function goToSlide(index) {
+    if (isTransitioning) return;
+    isTransitioning = true;
+    currentIndex = index + 1; // +1 to account for the clone at start
+    updateSlide();
+  }
+
+  nextButton.addEventListener("click", () => {
+    if (isTransitioning) return;
+    isTransitioning = true;
+    currentIndex++;
+    updateSlide();
+  });
+
+  prevButton.addEventListener("click", () => {
+    if (isTransitioning) return;
+    isTransitioning = true;
+    currentIndex--;
+    updateSlide();
+  });
+
+  // Auto-play carousel
+  let autoplay = setInterval(() => {
+    if (!isTransitioning) {
+      isTransitioning = true;
+      currentIndex++;
+      updateSlide();
+    }
+  }, 5000);
+
+  // Pause autoplay on hover
+  const carouselContainer = document.querySelector(".carousel-container");
+  carouselContainer.addEventListener("mouseenter", () => {
+    clearInterval(autoplay);
+  });
+
+  carouselContainer.addEventListener("mouseleave", () => {
+    autoplay = setInterval(() => {
+      if (!isTransitioning) {
+        isTransitioning = true;
+        currentIndex++;
+        updateSlide();
+      }
+    }, 5000);
+  });
 });
