@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // Set current year in footer
+  document.getElementById("currentYear").textContent = new Date().getFullYear();
+
   // Hamburger menu functionality
   const hamburger = document.querySelector(".hamburger");
   const navLinks = document.querySelector(".nav-links");
@@ -27,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Smooth scroll for navigation links
   const allNavLinks = document.querySelectorAll(
-    ".nav-links a, .hero-buttons a"
+    ".nav-links a, .hero-buttons a",
   );
   allNavLinks.forEach((link) => {
     link.addEventListener("click", function (e) {
@@ -50,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     {
       threshold: 0.1,
-    }
+    },
   );
 
   document.querySelectorAll("section").forEach((section) => {
@@ -69,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     {
       threshold: 0.5,
-    }
+    },
   );
 
   document.querySelectorAll(".skill").forEach((skill) => {
@@ -143,7 +146,7 @@ document.addEventListener("DOMContentLoaded", function () {
           formStatus.textContent =
             "Oops! Something went wrong. Please try again or email me directly.";
           formStatus.className = "form-status error";
-        }
+        },
       )
       .finally(function () {
         submitBtn.textContent = originalText;
@@ -280,7 +283,7 @@ document.addEventListener("DOMContentLoaded", function () {
       touchStartX = e.changedTouches[0].screenX;
       clearInterval(autoplay); // Pause autoplay on touch
     },
-    { passive: true }
+    { passive: true },
   );
 
   trackContainer.addEventListener(
@@ -298,7 +301,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }, 7000);
     },
-    { passive: true }
+    { passive: true },
   );
 
   function handleSwipe() {
