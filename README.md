@@ -220,6 +220,7 @@ git push origin main
 1. AWS Certified Cloud Practitioner (November 19, 2023)
 2. AWS Certified Solutions Architect - Associate (November 1, 2024)
 3. GitHub Foundations (February 26, 2025)
+4. AWS Certified AI Practitioner (July 27, 2026)
 
 ### ALX Program Certificates (Chronological)
 
