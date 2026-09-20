@@ -12,8 +12,7 @@
     <meta name="author" content="Ndung'u Kinyanjui">
     <meta name="robots" content="index, follow">
     <meta name="language" content="English">
-    <meta name="revisit-after" content="7 days">
-    
+
     <!-- Canonical URL -->
     <link rel="canonical" href="https://maven-13ttn.github.io/">
     
@@ -128,7 +127,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=BBH+Sans+Bartle&family=BBH+Sans+Bogle&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1" defer></script>
 </head>
 <body>
     <header>
@@ -136,12 +135,12 @@
             <div class="logo">
                 <a href="#home"><span class="first-name">Ndung'u</span> <span class="last-name">Kinyanjui</span></a>
             </div>
-            <button class="hamburger" aria-label="Toggle navigation">
+            <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navMenu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-            <ul class="nav-links">
+            <ul class="nav-links" id="navMenu">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#resume">Resume</a></li>
@@ -178,7 +177,7 @@
                 </div>
                 <div class="about-image">
                     <!-- Replace with a professional photo of yourself -->
-                    <img src="assets/images/hero-section-image.png" alt="Ndung'u Kinyanjui - Cloud Engineer and DevOps Practitioner" loading="lazy">
+                    <img src="assets/images/hero-section-image.png" alt="Ndung'u Kinyanjui - Cloud Engineer and DevOps Practitioner" width="377" height="661" loading="lazy">
                 </div>
             </div>
         </section>
@@ -330,7 +329,7 @@
                 <div class="certifications-grid">
                     <div class="certification-card">
                         <div class="cert-badge">
-                            <img src="https://images.credly.com/size/340x340/images/00634f82-b07f-4bbd-a6bb-53de397fc3a6/image.png" alt="AWS Certified Cloud Practitioner Badge" loading="lazy">
+                            <img src="https://images.credly.com/size/340x340/images/00634f82-b07f-4bbd-a6bb-53de397fc3a6/image.png" alt="AWS Certified Cloud Practitioner Badge" width="340" height="340" loading="lazy">
                         </div>
                         <h3>AWS Certified Cloud Practitioner</h3>
                         <p class="cert-issuer">Amazon Web Services</p>
@@ -340,7 +339,7 @@
                     
                     <div class="certification-card">
                         <div class="cert-badge">
-                            <img src="https://images.credly.com/size/340x340/images/0e284c3f-5164-4b21-8660-0d84737941bc/image.png" alt="AWS Certified Solutions Architect - Associate Badge" loading="lazy">
+                            <img src="https://images.credly.com/size/340x340/images/0e284c3f-5164-4b21-8660-0d84737941bc/image.png" alt="AWS Certified Solutions Architect - Associate Badge" width="340" height="340" loading="lazy">
                         </div>
                         <h3>AWS Certified Solutions Architect - Associate</h3>
                         <p class="cert-issuer">Amazon Web Services</p>
@@ -350,7 +349,7 @@
                     
                     <div class="certification-card">
                         <div class="cert-badge">
-                            <img src="https://images.credly.com/size/340x340/images/024d0122-724d-4c5a-bd83-cfe3c4b7a073/image.png" alt="GitHub Foundations Certification Badge" loading="lazy">
+                            <img src="https://images.credly.com/size/340x340/images/024d0122-724d-4c5a-bd83-cfe3c4b7a073/image.png" alt="GitHub Foundations Certification Badge" width="340" height="340" loading="lazy">
                         </div>
                         <h3>GitHub Foundations</h3>
                         <p class="cert-issuer">GitHub</p>
@@ -370,30 +369,34 @@
                 <h2>ALX PROGRAM CERTIFICATES</h2>
                 <p class="section-subtitle">Professional development certifications from ALX Africa</p>
                 <div class="carousel-container" role="region" aria-label="ALX Certificates Carousel">
-                    <button class="carousel-btn prev" aria-label="Previous certificate" tabindex="0">
+                    <button class="carousel-btn prev" aria-label="Previous certificate">
                         <i class="ph ph-caret-left"></i>
                     </button>
                     <div class="carousel-track-container" aria-live="polite">
                         <div class="carousel-track">
                             <div class="carousel-slide">
-                                <img src="assets/alx_certs/28-introduction-to-swe-0623-certificate-samuel-kinyanjui.png" alt="Introduction to Software Engineering Certificate" loading="lazy">
+                                <img src="assets/alx_certs/28-introduction-to-swe-0623-certificate-samuel-kinyanjui.png" alt="Introduction to Software Engineering Certificate" width="1280" height="720" loading="lazy">
                                 <p class="cert-caption">Introduction to Software Engineering (November 17, 2023)</p>
                             </div>
                             <div class="carousel-slide">
-                                <img src="assets/alx_certs/71-aws-cloud-computing-certificate-ndung-u-kinyanjui.png" alt="AWS Cloud Computing Certificate" loading="lazy">
+                                <img src="assets/alx_certs/71-aws-cloud-computing-certificate-ndung-u-kinyanjui.png" alt="AWS Cloud Computing Certificate" width="1280" height="720" loading="lazy">
                                 <p class="cert-caption">AWS Cloud Computing (December 11, 2024)</p>
                             </div>
                             <div class="carousel-slide">
-                                <img src="assets/alx_certs/89-professional-foundations-certificate-ndung-u-kinyanjui.png" alt="Professional Foundations Certificate" loading="lazy">
+                                <img src="assets/alx_certs/89-professional-foundations-certificate-ndung-u-kinyanjui.png" alt="Professional Foundations Certificate" width="1280" height="720" loading="lazy">
                                 <p class="cert-caption">Professional Foundations (April 15, 2025)</p>
                             </div>
                             <div class="carousel-slide">
-                                <img src="assets/alx_certs/86-prodev-backend-certificate-ndung-u-kinyanjui.png" alt="Backend Development Certificate" loading="lazy">
+                                <img src="assets/alx_certs/113-alx-ai-starter-kit-certificate-ndung-u-kinyanjui.png" alt="ALX AI Starter Kit Certificate" width="1280" height="720" loading="lazy">
+                                <p class="cert-caption">ALX AI Starter Kit (May 22, 2025)</p>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="assets/alx_certs/86-prodev-backend-certificate-ndung-u-kinyanjui.png" alt="Backend Development Certificate" width="1280" height="720" loading="lazy">
                                 <p class="cert-caption">Backend Development (August 22, 2025)</p>
                             </div>
                         </div>
                     </div>
-                    <button class="carousel-btn next" aria-label="Next certificate" tabindex="0">
+                    <button class="carousel-btn next" aria-label="Next certificate">
                         <i class="ph ph-caret-right"></i>
                     </button>
                 </div>
@@ -417,10 +420,10 @@
     </footer>
 
     <!-- Contact Form Modal -->
-    <div id="contactModal" class="modal">
+    <div id="contactModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
         <div class="modal-content">
             <button class="modal-close" aria-label="Close modal">&times;</button>
-            <h3>Get in Touch</h3>
+            <h3 id="modalTitle">Get in Touch</h3>
             <p class="modal-subtitle">Let's discuss your project or opportunity</p>
             <form id="contactForm">
                 <div class="form-group">
