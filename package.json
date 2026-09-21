@@ -1,7 +1,7 @@
 {
   "name": "portfolio-website",
   "version": "1.0.0",
-  "description": "Personal portfolio website for Ndung'u Kinyanjui - Data Scientist & AWS Certified Cloud Engineer",
+  "description": "Personal portfolio website for Ndung'u Kinyanjui - Cloud Engineer, DevOps Practitioner & Backend Developer",
   "main": "index.html",
   "scripts": {
     "dev": "npx http-server -p 8080",
@@ -10,8 +10,9 @@
   },
   "keywords": [
     "portfolio",
-    "data-science",
     "cloud-engineer",
+    "devops",
+    "backend-developer",
     "aws"
   ],
   "author": "Ndung'u Kinyanjui",

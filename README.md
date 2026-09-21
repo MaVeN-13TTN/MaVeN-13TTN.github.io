@@ -1,6 +1,6 @@
 # Portfolio Website - Ndung'u Kinyanjui
 
-Professional portfolio website showcasing my expertise as a Data Scientist and AWS Certified Cloud Engineer.
+Professional portfolio website showcasing my expertise as a Cloud Engineer, DevOps Practitioner, and Backend Developer.
 
 🔗 **Live Site**: [https://maven-13ttn.github.io](https://maven-13ttn.github.io)  
 📦 **Repository**: [https://github.com/MaVeN-13TTN/MaVeN-13TTN.github.io](https://github.com/MaVeN-13TTN/MaVeN-13TTN.github.io)
@@ -18,7 +18,7 @@ Professional portfolio website showcasing my expertise as a Data Scientist and A
 
 ### Sections
 
-- **Hero Section** - Purple glass chains background with animated introduction
+- **Hero Section** - Purple gradient background with animated introduction
 - **About Me** - Professional narrative and personal photo
 - **Resume** - H-arrangement layout featuring:
   - What I Do (Core Competencies)
@@ -53,7 +53,7 @@ Professional portfolio website showcasing my expertise as a Data Scientist and A
 ## 📁 Project Structure
 
 ```
-trx/
+MaVeN-13TTN.github.io/
 ├── assets/
 │   ├── alx_certs/                    # ALX certificate images
 │   │   ├── 28-introduction-to-swe-0623-certificate-samuel-kinyanjui.png
@@ -67,7 +67,7 @@ trx/
 │   │   └── script.js                 # JavaScript functionality
 │   └── images/
 │       ├── hero-section-image.png    # About section photo
-│       └── purple-glass-chains.png   # Background image
+│       └── purple-hero-background.png # Background image (Hero and Footer)
 ├── node_modules/                     # Dependencies (git-ignored)
 ├── .env                              # EmailJS credentials (git-ignored)
 ├── .gitignore                        # Git ignore rules
@@ -191,7 +191,7 @@ git push origin main
 **Required images:**
 
 1. `assets/images/hero-section-image.png` - Your professional photo (About section)
-2. `assets/images/purple-glass-chains.png` - Background image (Hero and Footer)
+2. `assets/images/purple-hero-background.png` - Background image (Hero and Footer)
 3. `assets/alx_certs/` - Your ALX certificate images (5 total)
 
 ### Update Content
@@ -220,6 +220,7 @@ git push origin main
 1. AWS Certified Cloud Practitioner (November 19, 2023)
 2. AWS Certified Solutions Architect - Associate (November 1, 2024)
 3. GitHub Foundations (February 26, 2025)
+4. AWS Certified AI Practitioner (July 27, 2026)
 
 ### ALX Program Certificates (Chronological)
 
@@ -264,4 +265,4 @@ MIT License - Feel free to use this template for your own portfolio!
 
 **Built with ❤️ by Ndung'u Kinyanjui**
 
-_Last Updated: October 15, 2025_
+_Last Updated: June 13, 2026_

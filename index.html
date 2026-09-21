@@ -8,12 +8,11 @@
     <title>Ndung'u Kinyanjui | Cloud Engineer & DevOps Practitioner</title>
     <meta name="title" content="Ndung'u Kinyanjui | Cloud Engineer, DevOps Practitioner & Backend Developer">
     <meta name="description" content="AWS Certified Cloud Engineer and DevOps Practitioner based in Nairobi, Kenya. Specializing in cloud architecture, infrastructure automation, and scalable backend systems. Building robust, cloud-native applications.">
-    <meta name="keywords" content="Cloud Engineer, DevOps Engineer, Backend Developer, AWS Certified, Cloud Architecture, Infrastructure as Code, Python, Nairobi Kenya, AWS Solutions Architect, CI/CD, API Development, Docker, Kubernetes">
+    <meta name="keywords" content="Cloud Engineer, DevOps Engineer, Backend Developer, AWS Certified, Cloud Architecture, Infrastructure as Code, Python, Nairobi Kenya, AWS Solutions Architect, AWS AI Practitioner, CI/CD, API Development, Docker, Kubernetes">
     <meta name="author" content="Ndung'u Kinyanjui">
     <meta name="robots" content="index, follow">
     <meta name="language" content="English">
-    <meta name="revisit-after" content="7 days">
-    
+
     <!-- Canonical URL -->
     <link rel="canonical" href="https://maven-13ttn.github.io/">
     
@@ -118,6 +117,15 @@
             "@type": "Organization",
             "name": "GitHub"
           }
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "AWS Certified AI Practitioner",
+          "credentialCategory": "AWS Certification",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "Amazon Web Services"
+          }
         }
       ]
     }
@@ -125,23 +133,24 @@
     
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%231D0225;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23260B68;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='20' ry='20' fill='url(%23grad)'/%3E%3Ctext x='50' y='72' font-family='BBH Sans Bogle, Arial, sans-serif' font-size='65' font-weight='bold' fill='%2368A2EB' text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=BBH+Sans+Bartle&family=BBH+Sans+Bogle&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+    <link rel="preload" href="assets/fonts/bbh-sans-bartle-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/bbh-sans-bogle-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/lato-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1" defer></script>
 </head>
 <body>
+    <a class="skip-link" href="#main">Skip to content</a>
     <header>
         <nav>
             <div class="logo">
                 <a href="#home"><span class="first-name">Ndung'u</span> <span class="last-name">Kinyanjui</span></a>
             </div>
-            <button class="hamburger" aria-label="Toggle navigation">
+            <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navMenu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-            <ul class="nav-links">
+            <ul class="nav-links" id="navMenu">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#resume">Resume</a></li>
@@ -151,7 +160,7 @@
         </nav>
     </header>
 
-    <main>
+    <main id="main" tabindex="-1">
         <!-- Home Section -->
         <section id="home">
             <div class="hero-content">
@@ -178,7 +187,11 @@
                 </div>
                 <div class="about-image">
                     <!-- Replace with a professional photo of yourself -->
-                    <img src="assets/images/hero-section-image.png" alt="Ndung'u Kinyanjui - Cloud Engineer and DevOps Practitioner" loading="lazy">
+                    <picture>
+                        <source srcset="assets/images/hero-section-image.avif" type="image/avif">
+                        <source srcset="assets/images/hero-section-image.webp" type="image/webp">
+                        <img src="assets/images/hero-section-image.png" alt="Ndung'u Kinyanjui - Cloud Engineer and DevOps Practitioner" width="377" height="661" loading="lazy">
+                    </picture>
                 </div>
             </div>
         </section>
@@ -330,7 +343,7 @@
                 <div class="certifications-grid">
                     <div class="certification-card">
                         <div class="cert-badge">
-                            <img src="https://images.credly.com/size/340x340/images/00634f82-b07f-4bbd-a6bb-53de397fc3a6/image.png" alt="AWS Certified Cloud Practitioner Badge" loading="lazy">
+                            <img src="https://images.credly.com/size/340x340/images/00634f82-b07f-4bbd-a6bb-53de397fc3a6/image.png" alt="AWS Certified Cloud Practitioner Badge" width="340" height="340" loading="lazy">
                         </div>
                         <h3>AWS Certified Cloud Practitioner</h3>
                         <p class="cert-issuer">Amazon Web Services</p>
@@ -340,7 +353,7 @@
                     
                     <div class="certification-card">
                         <div class="cert-badge">
-                            <img src="https://images.credly.com/size/340x340/images/0e284c3f-5164-4b21-8660-0d84737941bc/image.png" alt="AWS Certified Solutions Architect - Associate Badge" loading="lazy">
+                            <img src="https://images.credly.com/size/340x340/images/0e284c3f-5164-4b21-8660-0d84737941bc/image.png" alt="AWS Certified Solutions Architect - Associate Badge" width="340" height="340" loading="lazy">
                         </div>
                         <h3>AWS Certified Solutions Architect - Associate</h3>
                         <p class="cert-issuer">Amazon Web Services</p>
@@ -350,12 +363,22 @@
                     
                     <div class="certification-card">
                         <div class="cert-badge">
-                            <img src="https://images.credly.com/size/340x340/images/024d0122-724d-4c5a-bd83-cfe3c4b7a073/image.png" alt="GitHub Foundations Certification Badge" loading="lazy">
+                            <img src="https://images.credly.com/size/340x340/images/024d0122-724d-4c5a-bd83-cfe3c4b7a073/image.png" alt="GitHub Foundations Certification Badge" width="340" height="340" loading="lazy">
                         </div>
                         <h3>GitHub Foundations</h3>
                         <p class="cert-issuer">GitHub</p>
                         <p class="cert-date">Issued: February 26, 2025</p>
                         <a href="https://www.credly.com/badges/1a42b56a-e50d-45a4-86de-7107c5c0d3da" class="cert-link" target="_blank" rel="noopener">View Credential <i class="ph ph-arrow-square-out"></i></a>
+                    </div>
+
+                    <div class="certification-card">
+                        <div class="cert-badge">
+                            <img src="https://images.credly.com/size/340x340/images/4d4693bb-530e-4bca-9327-de07f3aa2348/image.png" alt="AWS Certified AI Practitioner Badge" width="340" height="340" loading="lazy">
+                        </div>
+                        <h3>AWS Certified AI Practitioner</h3>
+                        <p class="cert-issuer">Amazon Web Services</p>
+                        <p class="cert-date">Issued: July 27, 2026</p>
+                        <a href="https://www.credly.com/badges/dc2c0ea1-8eda-4422-96dc-f2c6b9773bc8" class="cert-link" target="_blank" rel="noopener">View Credential <i class="ph ph-arrow-square-out"></i></a>
                     </div>
                 </div>
             </div>
@@ -370,30 +393,54 @@
                 <h2>ALX PROGRAM CERTIFICATES</h2>
                 <p class="section-subtitle">Professional development certifications from ALX Africa</p>
                 <div class="carousel-container" role="region" aria-label="ALX Certificates Carousel">
-                    <button class="carousel-btn prev" aria-label="Previous certificate" tabindex="0">
+                    <button class="carousel-btn prev" aria-label="Previous certificate">
                         <i class="ph ph-caret-left"></i>
                     </button>
                     <div class="carousel-track-container" aria-live="polite">
                         <div class="carousel-track">
                             <div class="carousel-slide">
-                                <img src="assets/alx_certs/28-introduction-to-swe-0623-certificate-samuel-kinyanjui.png" alt="Introduction to Software Engineering Certificate" loading="lazy">
+                                <picture>
+                                    <source srcset="assets/alx_certs/28-introduction-to-swe-0623-certificate-samuel-kinyanjui.avif" type="image/avif">
+                                    <source srcset="assets/alx_certs/28-introduction-to-swe-0623-certificate-samuel-kinyanjui.webp" type="image/webp">
+                                    <img src="assets/alx_certs/28-introduction-to-swe-0623-certificate-samuel-kinyanjui.png" alt="Introduction to Software Engineering Certificate" width="1280" height="720" loading="lazy">
+                                </picture>
                                 <p class="cert-caption">Introduction to Software Engineering (November 17, 2023)</p>
                             </div>
                             <div class="carousel-slide">
-                                <img src="assets/alx_certs/71-aws-cloud-computing-certificate-ndung-u-kinyanjui.png" alt="AWS Cloud Computing Certificate" loading="lazy">
+                                <picture>
+                                    <source srcset="assets/alx_certs/71-aws-cloud-computing-certificate-ndung-u-kinyanjui.avif" type="image/avif">
+                                    <source srcset="assets/alx_certs/71-aws-cloud-computing-certificate-ndung-u-kinyanjui.webp" type="image/webp">
+                                    <img src="assets/alx_certs/71-aws-cloud-computing-certificate-ndung-u-kinyanjui.png" alt="AWS Cloud Computing Certificate" width="1280" height="720" loading="lazy">
+                                </picture>
                                 <p class="cert-caption">AWS Cloud Computing (December 11, 2024)</p>
                             </div>
                             <div class="carousel-slide">
-                                <img src="assets/alx_certs/89-professional-foundations-certificate-ndung-u-kinyanjui.png" alt="Professional Foundations Certificate" loading="lazy">
+                                <picture>
+                                    <source srcset="assets/alx_certs/89-professional-foundations-certificate-ndung-u-kinyanjui.avif" type="image/avif">
+                                    <source srcset="assets/alx_certs/89-professional-foundations-certificate-ndung-u-kinyanjui.webp" type="image/webp">
+                                    <img src="assets/alx_certs/89-professional-foundations-certificate-ndung-u-kinyanjui.png" alt="Professional Foundations Certificate" width="1280" height="720" loading="lazy">
+                                </picture>
                                 <p class="cert-caption">Professional Foundations (April 15, 2025)</p>
                             </div>
                             <div class="carousel-slide">
-                                <img src="assets/alx_certs/86-prodev-backend-certificate-ndung-u-kinyanjui.png" alt="Backend Development Certificate" loading="lazy">
+                                <picture>
+                                    <source srcset="assets/alx_certs/113-alx-ai-starter-kit-certificate-ndung-u-kinyanjui.avif" type="image/avif">
+                                    <source srcset="assets/alx_certs/113-alx-ai-starter-kit-certificate-ndung-u-kinyanjui.webp" type="image/webp">
+                                    <img src="assets/alx_certs/113-alx-ai-starter-kit-certificate-ndung-u-kinyanjui.png" alt="ALX AI Starter Kit Certificate" width="1280" height="720" loading="lazy">
+                                </picture>
+                                <p class="cert-caption">ALX AI Starter Kit (May 22, 2025)</p>
+                            </div>
+                            <div class="carousel-slide">
+                                <picture>
+                                    <source srcset="assets/alx_certs/86-prodev-backend-certificate-ndung-u-kinyanjui.avif" type="image/avif">
+                                    <source srcset="assets/alx_certs/86-prodev-backend-certificate-ndung-u-kinyanjui.webp" type="image/webp">
+                                    <img src="assets/alx_certs/86-prodev-backend-certificate-ndung-u-kinyanjui.png" alt="Backend Development Certificate" width="1280" height="720" loading="lazy">
+                                </picture>
                                 <p class="cert-caption">Backend Development (August 22, 2025)</p>
                             </div>
                         </div>
                     </div>
-                    <button class="carousel-btn next" aria-label="Next certificate" tabindex="0">
+                    <button class="carousel-btn next" aria-label="Next certificate">
                         <i class="ph ph-caret-right"></i>
                     </button>
                 </div>
@@ -417,10 +464,10 @@
     </footer>
 
     <!-- Contact Form Modal -->
-    <div id="contactModal" class="modal">
+    <div id="contactModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
         <div class="modal-content">
             <button class="modal-close" aria-label="Close modal">&times;</button>
-            <h3>Get in Touch</h3>
+            <h3 id="modalTitle">Get in Touch</h3>
             <p class="modal-subtitle">Let's discuss your project or opportunity</p>
             <form id="contactForm">
                 <div class="form-group">

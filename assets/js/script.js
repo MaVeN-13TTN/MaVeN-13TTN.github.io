@@ -2,29 +2,38 @@ document.addEventListener("DOMContentLoaded", function () {
   // Set current year in footer
   document.getElementById("currentYear").textContent = new Date().getFullYear();
 
+  // Respect visitors who prefer reduced motion
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+  const scrollBehavior = prefersReducedMotion ? "auto" : "smooth";
+
   // Hamburger menu functionality
   const hamburger = document.querySelector(".hamburger");
   const navLinks = document.querySelector(".nav-links");
   const navItems = document.querySelectorAll(".nav-links a");
 
+  function setMenu(open) {
+    hamburger.classList.toggle("active", open);
+    navLinks.classList.toggle("active", open);
+    hamburger.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+
   hamburger.addEventListener("click", function () {
-    hamburger.classList.toggle("active");
-    navLinks.classList.toggle("active");
+    setMenu(!hamburger.classList.contains("active"));
   });
 
   // Close menu when clicking on a nav link
   navItems.forEach((item) => {
     item.addEventListener("click", function () {
-      hamburger.classList.remove("active");
-      navLinks.classList.remove("active");
+      setMenu(false);
     });
   });
 
   // Close menu when clicking outside
   document.addEventListener("click", function (event) {
     if (!hamburger.contains(event.target) && !navLinks.contains(event.target)) {
-      hamburger.classList.remove("active");
-      navLinks.classList.remove("active");
+      setMenu(false);
     }
   });
 
@@ -34,13 +43,23 @@ document.addEventListener("DOMContentLoaded", function () {
   );
   allNavLinks.forEach((link) => {
     link.addEventListener("click", function (e) {
-      e.preventDefault();
       const targetId = this.getAttribute("href");
-      document.querySelector(targetId).scrollIntoView({
-        behavior: "smooth",
-      });
+      const target = document.querySelector(targetId);
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: scrollBehavior });
+      // Keep the URL in step so sections stay linkable and the back button works.
+      history.pushState(null, "", targetId);
     });
   });
+
+  // Honour a deep link that arrives with the page.
+  if (window.location.hash) {
+    const initial = document.querySelector(window.location.hash);
+    if (initial) {
+      requestAnimationFrame(() => initial.scrollIntoView({ behavior: "auto" }));
+    }
+  }
 
   // Add scroll animations to sections
   const observer = new IntersectionObserver(
@@ -61,12 +80,15 @@ document.addEventListener("DOMContentLoaded", function () {
     observer.observe(section);
   });
 
-  // Animate skill bars on scroll
+  // Animate skill bars when they scroll into view.
+  // Each .skill-level keeps its target width inline (so the bars still render
+  // if JavaScript is unavailable); we collapse them, then animate back on view.
   const skillObserver = new IntersectionObserver(
-    (entries) => {
+    (entries, observer) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
+          entry.target.style.width = entry.target.dataset.targetWidth;
+          observer.unobserve(entry.target);
         }
       });
     },
@@ -75,8 +97,10 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   );
 
-  document.querySelectorAll(".skill").forEach((skill) => {
-    skillObserver.observe(skill);
+  document.querySelectorAll(".skill-level").forEach((level) => {
+    level.dataset.targetWidth = level.style.width;
+    level.style.width = "0";
+    skillObserver.observe(level);
   });
 
   // Contact Form Modal & EmailJS
@@ -86,34 +110,62 @@ document.addEventListener("DOMContentLoaded", function () {
   const contactForm = document.getElementById("contactForm");
   const formStatus = document.getElementById("formStatus");
 
+  let lastFocusedElement = null;
+
   // Initialize EmailJS
   emailjs.init("Txb7Gf9T2oxETCybV");
 
-  // Open modal
-  contactBtn.addEventListener("click", function () {
+  function getFocusable() {
+    return contactModal.querySelectorAll(
+      'button, [href], input, textarea, select, [tabindex]:not([tabindex="-1"])',
+    );
+  }
+
+  function openModal() {
+    lastFocusedElement = document.activeElement;
     contactModal.classList.add("active");
     document.body.style.overflow = "hidden"; // Prevent background scroll on mobile
-  });
+    const focusable = getFocusable();
+    if (focusable.length) focusable[0].focus();
+  }
 
-  // Close modal
-  modalClose.addEventListener("click", function () {
+  function closeModal() {
     contactModal.classList.remove("active");
     document.body.style.overflow = ""; // Restore scrolling
-  });
+    if (lastFocusedElement) lastFocusedElement.focus();
+  }
+
+  // Open modal
+  contactBtn.addEventListener("click", openModal);
+
+  // Close modal
+  modalClose.addEventListener("click", closeModal);
 
   // Close modal when clicking outside
   contactModal.addEventListener("click", function (e) {
     if (e.target === contactModal) {
-      contactModal.classList.remove("active");
-      document.body.style.overflow = ""; // Restore scrolling
+      closeModal();
     }
   });
 
-  // Close modal with Escape key
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && contactModal.classList.contains("active")) {
-      contactModal.classList.remove("active");
-      document.body.style.overflow = ""; // Restore scrolling
+  // Keyboard handling: Escape to close, Tab to keep focus inside the modal
+  contactModal.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      closeModal();
+      return;
+    }
+    if (e.key === "Tab") {
+      const focusable = Array.from(getFocusable());
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     }
   });
 
@@ -137,8 +189,7 @@ document.addEventListener("DOMContentLoaded", function () {
           contactForm.reset();
 
           setTimeout(function () {
-            contactModal.classList.remove("active");
-            document.body.style.overflow = ""; // Restore scrolling
+            closeModal();
             formStatus.className = "form-status";
           }, 3000);
         },
@@ -172,7 +223,6 @@ document.addEventListener("DOMContentLoaded", function () {
   track.insertBefore(lastClone, slides[0]);
 
   const allSlides = Array.from(track.children);
-  const slideWidth = allSlides[0].getBoundingClientRect().width;
 
   // Start at the first real slide (index 1 because of the clone at start)
   currentIndex = 1;
@@ -245,29 +295,36 @@ document.addEventListener("DOMContentLoaded", function () {
     updateSlide();
   });
 
-  // Auto-play carousel (increased to 7 seconds for better mobile readability)
-  let autoplay = setInterval(() => {
+  // Auto-play carousel (7s interval), unless the visitor prefers reduced motion
+  const carouselContainer = document.querySelector(".carousel-container");
+  let autoplay = null;
+
+  function advanceCarousel() {
     if (!isTransitioning) {
       isTransitioning = true;
       currentIndex++;
       updateSlide();
     }
-  }, 7000);
+  }
 
-  // Pause autoplay on hover
-  const carouselContainer = document.querySelector(".carousel-container");
-  carouselContainer.addEventListener("mouseenter", () => {
+  function startAutoplay() {
+    if (prefersReducedMotion || autoplay) return;
+    autoplay = setInterval(advanceCarousel, 7000);
+  }
+
+  function stopAutoplay() {
     clearInterval(autoplay);
-  });
+    autoplay = null;
+  }
 
-  carouselContainer.addEventListener("mouseleave", () => {
-    autoplay = setInterval(() => {
-      if (!isTransitioning) {
-        isTransitioning = true;
-        currentIndex++;
-        updateSlide();
-      }
-    }, 7000);
+  startAutoplay();
+
+  // Pause on hover and on keyboard focus (WCAG 2.2.2 Pause, Stop, Hide)
+  carouselContainer.addEventListener("mouseenter", stopAutoplay);
+  carouselContainer.addEventListener("mouseleave", startAutoplay);
+  carouselContainer.addEventListener("focusin", stopAutoplay);
+  carouselContainer.addEventListener("focusout", (e) => {
+    if (!carouselContainer.contains(e.relatedTarget)) startAutoplay();
   });
 
   // Touch/Swipe support for mobile
@@ -281,7 +338,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "touchstart",
     (e) => {
       touchStartX = e.changedTouches[0].screenX;
-      clearInterval(autoplay); // Pause autoplay on touch
+      stopAutoplay(); // Pause autoplay on touch
     },
     { passive: true },
   );
@@ -293,13 +350,7 @@ document.addEventListener("DOMContentLoaded", function () {
       handleSwipe();
 
       // Restart autoplay after touch
-      autoplay = setInterval(() => {
-        if (!isTransitioning) {
-          isTransitioning = true;
-          currentIndex++;
-          updateSlide();
-        }
-      }, 7000);
+      startAutoplay();
     },
     { passive: true },
   );
@@ -367,7 +418,7 @@ document.addEventListener("DOMContentLoaded", function () {
   scrollToTopBtn.addEventListener("click", function () {
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: scrollBehavior,
     });
   });
 });
