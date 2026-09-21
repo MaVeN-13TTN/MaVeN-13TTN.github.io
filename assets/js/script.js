@@ -43,13 +43,23 @@ document.addEventListener("DOMContentLoaded", function () {
   );
   allNavLinks.forEach((link) => {
     link.addEventListener("click", function (e) {
-      e.preventDefault();
       const targetId = this.getAttribute("href");
-      document.querySelector(targetId).scrollIntoView({
-        behavior: scrollBehavior,
-      });
+      const target = document.querySelector(targetId);
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: scrollBehavior });
+      // Keep the URL in step so sections stay linkable and the back button works.
+      history.pushState(null, "", targetId);
     });
   });
+
+  // Honour a deep link that arrives with the page.
+  if (window.location.hash) {
+    const initial = document.querySelector(window.location.hash);
+    if (initial) {
+      requestAnimationFrame(() => initial.scrollIntoView({ behavior: "auto" }));
+    }
+  }
 
   // Add scroll animations to sections
   const observer = new IntersectionObserver(

@@ -1,3 +1,78 @@
+/* Self-hosted fonts. Served from this origin so the critical path holds no
+   third-party DNS/TLS handshakes; unicode-range keeps latin-ext off the wire
+   unless the page actually needs it. */
+@font-face {
+  font-family: "BBH Sans Bartle";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/bbh-sans-bartle-400-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "BBH Sans Bogle";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/bbh-sans-bogle-400-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("../fonts/lato-300-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("../fonts/lato-300-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/lato-400-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/lato-400-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/lato-700-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/lato-700-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 :root {
   /* Primary Colors */
   --color-electric-blue: #4c5dd7;
@@ -31,6 +106,37 @@ body {
   color: var(--color-text);
 }
 
+picture {
+  display: contents;
+}
+
+/* Accessibility ------------------------------------------------------------ */
+
+:focus-visible {
+  outline: 3px solid var(--color-soft-sky-blue);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0.5rem;
+  left: 50%;
+  z-index: 2100;
+  padding: 0.75rem 1.25rem;
+  background: var(--color-deep-indigo);
+  color: var(--color-text);
+  border: 2px solid var(--color-soft-sky-blue);
+  border-radius: 8px;
+  text-decoration: none;
+  transform: translateX(-50%) translateY(-250%);
+  transition: transform 0.2s ease;
+}
+
+.skip-link:focus {
+  transform: translateX(-50%) translateY(0);
+}
+
 /* Header & Navigation */
 header {
   position: fixed;
@@ -50,7 +156,7 @@ nav {
 .logo a {
   font-family: "BBH Sans Bartle", sans-serif;
   font-weight: 400;
-  font-size: 1.5rem;
+  font-size: clamp(1.1rem, 0.9667rem + 0.593vw, 1.5rem);
   color: var(--color-soft-sky-blue);
   text-decoration: none;
 }
@@ -95,7 +201,6 @@ main {
 
 section {
   padding: 6rem 5%;
-  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -104,12 +209,25 @@ section {
 /* Hero Section */
 #home {
   text-align: center;
-  background: linear-gradient(
+  min-height: 100vh;
+  min-height: 100svh; /* avoids the mobile URL-bar jump where supported */
+  background-image: linear-gradient(
       135deg,
       rgba(29, 2, 37, 0.85) 0%,
       rgba(38, 11, 104, 0.85) 100%
     ),
-    url("../images/purple-hero-background.png") no-repeat center center;
+    url("../images/purple-hero-background.png");
+  background-image: linear-gradient(
+      135deg,
+      rgba(29, 2, 37, 0.85) 0%,
+      rgba(38, 11, 104, 0.85) 100%
+    ),
+    image-set(
+      url("../images/purple-hero-background.avif") type("image/avif"),
+      url("../images/purple-hero-background.webp") type("image/webp"),
+      url("../images/purple-hero-background.png") type("image/png")
+    );
+  background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
   background-attachment: scroll;
@@ -147,7 +265,7 @@ section {
 
 #home h1 {
   font-family: "BBH Sans Bogle", sans-serif;
-  font-size: 4rem;
+  font-size: clamp(1.6rem, 0.8rem + 3.556vw, 4rem);
   font-weight: 400;
   letter-spacing: 2px;
   color: var(--color-text);
@@ -156,14 +274,14 @@ section {
 }
 
 #home h2 {
-  font-size: 1.5rem;
+  font-size: clamp(0.9rem, 0.7rem + 0.889vw, 1.5rem);
   font-weight: 300;
   color: var(--color-soft-sky-blue);
   margin-bottom: 2rem;
 }
 
 .hero-pitch {
-  font-size: 1.1rem;
+  font-size: clamp(0.9rem, 0.8333rem + 0.296vw, 1.1rem);
   line-height: 1.8;
   max-width: 700px;
   margin: 0 auto 2.5rem auto;
@@ -177,6 +295,7 @@ section {
 
 .btn {
   display: inline-block;
+  font-size: clamp(0.85rem, 0.8rem + 0.222vw, 1rem);
   padding: 0.8rem 2rem;
   border: 2px solid var(--color-accent);
   background-color: transparent;
@@ -233,7 +352,7 @@ section {
 
 .about-text h2 {
   font-family: "BBH Sans Bogle", sans-serif;
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 1.8333rem + 0.741vw, 2.5rem);
   font-weight: 400;
   color: var(--color-soft-sky-blue);
   margin-bottom: 2rem;
@@ -283,7 +402,7 @@ section {
 
 .resume-container h2 {
   font-family: "BBH Sans Bogle", sans-serif;
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 1.8333rem + 0.741vw, 2.5rem);
   font-weight: 400;
   color: var(--color-soft-sky-blue);
   text-align: center;
@@ -328,7 +447,7 @@ section {
 
 .resume-column h3 {
   font-family: "BBH Sans Bogle", sans-serif;
-  font-size: 1.5rem;
+  font-size: clamp(1.35rem, 1.3rem + 0.222vw, 1.5rem);
   font-weight: 400;
   color: var(--color-soft-sky-blue);
   margin-bottom: 2rem;
@@ -444,7 +563,7 @@ section {
   color: var(--color-text);
   margin-bottom: 0.6rem;
   font-weight: 500;
-  font-size: 0.9rem;
+  font-size: clamp(0.85rem, 0.8333rem + 0.074vw, 0.9rem);
 }
 
 .skill-bar {
@@ -542,7 +661,7 @@ section {
 
 .certifications-content h2 {
   font-family: "BBH Sans Bogle", sans-serif;
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 1.8333rem + 0.741vw, 2.5rem);
   font-weight: 400;
   color: var(--color-soft-sky-blue);
   text-align: center;
@@ -671,7 +790,7 @@ section {
 
 .alx-certs-content h2 {
   font-family: "BBH Sans Bogle", sans-serif;
-  font-size: 2.5rem;
+  font-size: clamp(1.4rem, 1.0333rem + 1.63vw, 2.5rem);
   font-weight: 400;
   color: var(--color-soft-sky-blue);
   margin-bottom: 1rem;
@@ -680,7 +799,7 @@ section {
 
 .section-subtitle {
   color: var(--color-muted);
-  font-size: 1.1rem;
+  font-size: clamp(0.8rem, 0.7rem + 0.444vw, 1.1rem);
   margin-bottom: 3rem;
 }
 
@@ -748,7 +867,7 @@ section {
 }
 
 .cert-caption {
-  font-size: 1.2rem;
+  font-size: clamp(0.8rem, 0.6667rem + 0.593vw, 1.2rem);
   color: var(--color-text);
   font-weight: 500;
   margin-top: 1rem;
@@ -774,7 +893,7 @@ section {
   align-items: center;
   justify-content: center;
   color: var(--color-text);
-  font-size: 1.8rem;
+  font-size: clamp(1.1rem, 0.8667rem + 1.037vw, 1.8rem);
   transition: all 0.3s ease;
   flex-shrink: 0;
   touch-action: manipulation;
@@ -827,7 +946,7 @@ section {
   );
   position: relative;
   margin: 0;
-  box-shadow: 0 0 20px rgba(76, 93, 215, 0.5), 0 0 40px rgba(194, 49, 201, 0.3);
+  box-shadow: 0 0 20px rgba(76, 93, 215, 0.35);
 }
 
 .section-divider::before {
@@ -866,12 +985,23 @@ section {
 footer {
   text-align: center;
   padding: 5rem 5% 3rem 5%;
-  background: linear-gradient(
+  background-image: linear-gradient(
       180deg,
       rgba(29, 2, 37, 0.85) 0%,
       rgba(38, 11, 104, 0.85) 100%
     ),
-    url("../images/purple-hero-background.png") no-repeat center center;
+    url("../images/purple-hero-background.png");
+  background-image: linear-gradient(
+      180deg,
+      rgba(29, 2, 37, 0.85) 0%,
+      rgba(38, 11, 104, 0.85) 100%
+    ),
+    image-set(
+      url("../images/purple-hero-background.avif") type("image/avif"),
+      url("../images/purple-hero-background.webp") type("image/webp"),
+      url("../images/purple-hero-background.png") type("image/png")
+    );
+  background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
   background-attachment: scroll;
@@ -898,7 +1028,7 @@ footer > * {
 
 footer h3 {
   font-family: "BBH Sans Bogle", sans-serif;
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 1.3333rem + 0.741vw, 2rem);
   font-weight: 400;
   color: var(--color-soft-sky-blue);
   margin-bottom: 1rem;
@@ -906,7 +1036,7 @@ footer h3 {
 
 footer p {
   margin-bottom: 2.5rem;
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 0.9667rem + 0.148vw, 1.1rem);
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
@@ -928,7 +1058,7 @@ footer .social-icons {
 
 footer .social-icons a {
   color: var(--color-muted);
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 1.3333rem + 0.741vw, 2rem);
   transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
@@ -1058,7 +1188,7 @@ footer .copyright {
   background: none;
   border: none;
   color: var(--color-text);
-  font-size: 2rem;
+  font-size: clamp(1.4rem, 1.2rem + 0.889vw, 2rem);
   cursor: pointer;
   transition: all 0.3s ease;
   width: 40px;
@@ -1077,7 +1207,7 @@ footer .copyright {
 
 .modal-content h3 {
   font-family: "BBH Sans Bogle", sans-serif;
-  font-size: 2rem;
+  font-size: clamp(1.2rem, 0.9333rem + 1.185vw, 2rem);
   color: var(--color-soft-sky-blue);
   margin-bottom: 0.5rem;
 }
@@ -1085,7 +1215,7 @@ footer .copyright {
 .modal-subtitle {
   color: var(--color-muted);
   margin-bottom: 2rem;
-  font-size: 1rem;
+  font-size: clamp(0.8rem, 0.7333rem + 0.296vw, 1rem);
 }
 
 .form-group {
@@ -1097,7 +1227,7 @@ footer .copyright {
   margin-bottom: 0.5rem;
   color: var(--color-text);
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: clamp(0.8rem, 0.75rem + 0.222vw, 0.95rem);
 }
 
 .form-group input,
@@ -1121,7 +1251,6 @@ footer .copyright {
 
 .form-group input:focus,
 .form-group textarea:focus {
-  outline: none;
   border-color: var(--color-electric-blue);
   box-shadow: 0 0 15px rgba(76, 93, 215, 0.3);
   background: rgba(38, 11, 104, 0.6);
@@ -1163,7 +1292,7 @@ footer .copyright {
   padding: 0.8rem;
   border-radius: 6px;
   text-align: center;
-  font-size: 0.95rem;
+  font-size: clamp(0.8rem, 0.75rem + 0.222vw, 0.95rem);
   display: none;
 }
 
@@ -1240,13 +1369,8 @@ footer .copyright {
     max-width: 550px;
   }
 
-  .modal-content h3 {
-    font-size: 1.8rem;
-  }
-
   .form-group input,
   .form-group textarea {
-    font-size: 0.95rem;
     padding: 0.85rem 0.9rem;
   }
 }
@@ -1258,7 +1382,6 @@ footer .copyright {
     display: flex;
     flex-direction: column;
     line-height: 1.2;
-    font-size: 1.3rem;
   }
 
   .logo a .first-name,
@@ -1277,6 +1400,7 @@ footer .copyright {
     width: 70%;
     max-width: 300px;
     height: 100vh;
+    height: 100svh;
     background: rgba(29, 2, 37, 0.75);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
@@ -1315,12 +1439,10 @@ footer .copyright {
   /* Sections */
   section {
     padding: 3rem 5%;
-    min-height: auto;
   }
 
   /* Hero Section */
   #home {
-    min-height: 100vh;
     background-size: cover;
     background-position: center center;
     background-attachment: scroll;
@@ -1337,19 +1459,16 @@ footer .copyright {
   }
 
   #home h1 {
-    font-size: 2.5rem;
     letter-spacing: 1px;
     text-align: center;
     word-break: break-word;
   }
 
   #home h2 {
-    font-size: 1.2rem;
     text-align: center;
   }
 
   .hero-pitch {
-    font-size: 0.95rem;
     padding: 0 1rem;
     text-align: center;
   }
@@ -1367,10 +1486,6 @@ footer .copyright {
   .about-content {
     grid-template-columns: 1fr;
     gap: 2rem;
-  }
-
-  .about-text h2 {
-    font-size: 2rem;
   }
 
   .about-image {
@@ -1399,11 +1514,6 @@ footer .copyright {
     gap: 1.5rem;
   }
 
-  /* Certifications */
-  .certifications-content h2 {
-    font-size: 2rem;
-  }
-
   .certifications-grid {
     grid-template-columns: 1fr;
   }
@@ -1420,13 +1530,11 @@ footer .copyright {
   }
 
   .alx-certs-content h2 {
-    font-size: 2rem;
     margin-bottom: 0.8rem;
     padding: 0 0.5rem;
   }
 
   .section-subtitle {
-    font-size: 0.95rem;
     margin-bottom: 2rem;
     padding: 0 0.5rem;
   }
@@ -1461,7 +1569,6 @@ footer .copyright {
   }
 
   .cert-caption {
-    font-size: 0.95rem;
     padding: 0 1rem;
   }
 
@@ -1487,14 +1594,6 @@ footer .copyright {
     background: rgba(29, 2, 37, 0.5);
   }
 
-  footer h3 {
-    font-size: 1.5rem;
-  }
-
-  footer p {
-    font-size: 1rem;
-  }
-
   footer .social-icons {
     gap: 1.5rem;
   }
@@ -1502,7 +1601,6 @@ footer .copyright {
   footer .social-icons a {
     width: 45px;
     height: 45px;
-    font-size: 1.8rem;
   }
 
   /* Contact Form - Mobile */
@@ -1528,17 +1626,14 @@ footer .copyright {
     right: 0.8rem;
     width: 36px;
     height: 36px;
-    font-size: 1.8rem;
   }
 
   .modal-content h3 {
-    font-size: 1.6rem;
     margin-bottom: 0.4rem;
     padding-right: 2rem;
   }
 
   .modal-subtitle {
-    font-size: 0.9rem;
     margin-bottom: 1.5rem;
   }
 
@@ -1547,13 +1642,11 @@ footer .copyright {
   }
 
   .form-group label {
-    font-size: 0.9rem;
     margin-bottom: 0.4rem;
   }
 
   .form-group input,
   .form-group textarea {
-    font-size: 1rem;
     padding: 0.8rem 0.9rem;
   }
 
@@ -1563,11 +1656,9 @@ footer .copyright {
 
   .btn-submit {
     padding: 0.85rem 1.5rem;
-    font-size: 1rem;
   }
 
   .form-status {
-    font-size: 0.9rem;
     padding: 0.7rem;
   }
 }
@@ -1576,10 +1667,6 @@ footer .copyright {
 @media (max-width: 480px) {
   header {
     padding: 1rem 4%;
-  }
-
-  .logo a {
-    font-size: 1.1rem;
   }
 
   /* Increase mobile menu width for better usability */
@@ -1603,18 +1690,15 @@ footer .copyright {
   }
 
   #home h1 {
-    font-size: 2rem;
     word-break: break-word;
     line-height: 1.2;
   }
 
   #home h2 {
-    font-size: 1rem;
     line-height: 1.4;
   }
 
   .hero-pitch {
-    font-size: 0.9rem;
     line-height: 1.6;
     padding: 0 0.5rem;
   }
@@ -1626,21 +1710,11 @@ footer .copyright {
 
   .btn {
     padding: 0.7rem 1.5rem;
-    font-size: 0.9rem;
-  }
-
-  .about-text h2,
-  .certifications-content h2 {
-    font-size: 2rem;
   }
 
   .about-image img {
     max-width: 50%;
     width: 50%;
-  }
-
-  .resume-column h3 {
-    font-size: 1.35rem;
   }
 
   .certification-card {
@@ -1674,11 +1748,6 @@ footer .copyright {
     height: 10px;
   }
 
-  /* Make skill names more readable */
-  .skill-name {
-    font-size: 0.85rem;
-  }
-
   /* ALX Carousel - Small Mobile */
   #alx-certificates {
     padding: 2.5rem 3%;
@@ -1686,13 +1755,11 @@ footer .copyright {
   }
 
   .alx-certs-content h2 {
-    font-size: 1.6rem;
     margin-bottom: 0.6rem;
     padding: 0 0.25rem;
   }
 
   .section-subtitle {
-    font-size: 0.85rem;
     margin-bottom: 1.5rem;
     padding: 0 0.25rem;
   }
@@ -1711,7 +1778,6 @@ footer .copyright {
   .carousel-btn {
     width: 35px;
     height: 35px;
-    font-size: 1.2rem;
   }
 
   .carousel-slide {
@@ -1728,7 +1794,6 @@ footer .copyright {
   }
 
   .cert-caption {
-    font-size: 0.85rem;
     padding: 0 0.25rem;
     line-height: 1.4;
     word-wrap: break-word;
@@ -1768,16 +1833,13 @@ footer .copyright {
     right: 0.6rem;
     width: 32px;
     height: 32px;
-    font-size: 1.6rem;
   }
 
   .modal-content h3 {
-    font-size: 1.4rem;
     margin-bottom: 0.3rem;
   }
 
   .modal-subtitle {
-    font-size: 0.85rem;
     margin-bottom: 1.2rem;
   }
 
@@ -1786,13 +1848,11 @@ footer .copyright {
   }
 
   .form-group label {
-    font-size: 0.85rem;
     margin-bottom: 0.4rem;
   }
 
   .form-group input,
   .form-group textarea {
-    font-size: 0.95rem;
     padding: 0.75rem 0.85rem;
   }
 
@@ -1802,11 +1862,9 @@ footer .copyright {
 
   .btn-submit {
     padding: 0.8rem 1.3rem;
-    font-size: 0.95rem;
   }
 
   .form-status {
-    font-size: 0.85rem;
     padding: 0.6rem;
   }
 
@@ -1826,7 +1884,6 @@ footer .copyright {
   footer .social-icons a {
     width: 40px;
     height: 40px;
-    font-size: 1.5rem;
   }
 }
 
@@ -1848,25 +1905,21 @@ footer .copyright {
   }
 
   #home h1 {
-    font-size: 1.6rem;
     word-break: break-word;
     line-height: 1.3;
   }
 
   #home h2 {
-    font-size: 0.9rem;
     line-height: 1.4;
   }
 
   .hero-pitch {
-    font-size: 0.9rem;
     line-height: 1.6;
     padding: 0;
   }
 
   .btn {
     padding: 0.6rem 1.2rem;
-    font-size: 0.85rem;
   }
 
   .about-image img {
@@ -1875,12 +1928,10 @@ footer .copyright {
   }
 
   .alx-certs-content h2 {
-    font-size: 1.4rem;
     padding: 0;
   }
 
   .section-subtitle {
-    font-size: 0.8rem;
     padding: 0;
   }
 
@@ -1898,7 +1949,6 @@ footer .copyright {
   .carousel-btn {
     width: 32px;
     height: 32px;
-    font-size: 1.1rem;
   }
 
   .carousel-slide img {
@@ -1908,7 +1958,6 @@ footer .copyright {
   }
 
   .cert-caption {
-    font-size: 0.8rem;
     line-height: 1.4;
     padding: 0;
     word-wrap: break-word;
@@ -1946,16 +1995,13 @@ footer .copyright {
     right: 0.5rem;
     width: 32px;
     height: 32px;
-    font-size: 1.4rem;
   }
 
   .modal-content h3 {
-    font-size: 1.2rem;
     line-height: 1.3;
   }
 
   .modal-subtitle {
-    font-size: 0.8rem;
     margin-bottom: 1rem;
   }
 
@@ -1963,13 +2009,8 @@ footer .copyright {
     margin-bottom: 1rem;
   }
 
-  .form-group label {
-    font-size: 0.8rem;
-  }
-
   .form-group input,
   .form-group textarea {
-    font-size: 0.9rem;
     padding: 0.7rem 0.8rem;
   }
 
@@ -1979,11 +2020,9 @@ footer .copyright {
 
   .btn-submit {
     padding: 0.75rem 1.2rem;
-    font-size: 0.9rem;
   }
 
   .form-status {
-    font-size: 0.8rem;
     padding: 0.5rem;
   }
 
@@ -2021,7 +2060,6 @@ footer .copyright {
 /* Landscape phone optimization */
 @media (max-height: 500px) and (orientation: landscape) {
   section {
-    min-height: auto;
     padding: 3rem 5%;
   }
 
@@ -2035,17 +2073,14 @@ footer .copyright {
   }
 
   #home h1 {
-    font-size: 2rem;
     margin-bottom: 0.5rem;
   }
 
   #home h2 {
-    font-size: 1rem;
     margin-bottom: 1rem;
   }
 
   .hero-pitch {
-    font-size: 0.9rem;
     margin-bottom: 1.5rem;
   }
 
@@ -2056,10 +2091,6 @@ footer .copyright {
   .modal-content {
     max-height: 95vh;
     padding: 1rem 1.5rem;
-  }
-
-  .modal-content h3 {
-    font-size: 1.3rem;
   }
 
   .form-group {
@@ -2078,9 +2109,6 @@ footer .copyright {
     padding: 6rem 5% 4rem 5%;
   }
 
-  section {
-    min-height: auto;
-  }
 }
 
 /* Animations */
@@ -2109,7 +2137,7 @@ footer .copyright {
   border: 2px solid var(--color-electric-blue);
   border-radius: 50%;
   color: var(--color-text);
-  font-size: 1.5rem;
+  font-size: clamp(1.2rem, 1.1rem + 0.444vw, 1.5rem);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -2121,7 +2149,6 @@ footer .copyright {
   z-index: 999;
   box-shadow: 0 5px 20px rgba(76, 93, 215, 0.4),
     0 0 20px rgba(194, 49, 201, 0.3);
-  animation: pulse 2s ease-in-out infinite;
 }
 
 .scroll-to-top:hover {
@@ -2145,24 +2172,11 @@ footer .copyright {
   transform: translateY(0);
 }
 
-@keyframes pulse {
-  0%,
-  100% {
-    box-shadow: 0 5px 20px rgba(76, 93, 215, 0.4),
-      0 0 20px rgba(194, 49, 201, 0.3);
-  }
-  50% {
-    box-shadow: 0 5px 25px rgba(76, 93, 215, 0.6),
-      0 0 30px rgba(194, 49, 201, 0.5);
-  }
-}
-
 /* Mobile responsiveness for scroll button */
 @media (max-width: 768px) {
   .scroll-to-top {
     width: 45px;
     height: 45px;
-    font-size: 1.3rem;
     bottom: 1.5rem;
     right: 1.5rem;
   }
@@ -2172,7 +2186,6 @@ footer .copyright {
   .scroll-to-top {
     width: 40px;
     height: 40px;
-    font-size: 1.2rem;
     bottom: 1rem;
     right: 1rem;
   }
